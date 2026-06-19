@@ -1,2 +1,25 @@
-ticker, company, industry
+ticker,company,industry
 MSFT,Microsoft,Technology
+AAPL,Apple,Technology
+NVDA,NVIDIA,Technology
+GOOGL,Alphabet,Technology
+ABT,Abbott Labs,Healthcare
+LLY,Eli Lilly,Healthcare
+CVS,CVS Health,Healthcare
+JPM,JPMorgan,Finance
+GS,Goldman Sachs,Finance
+BLK,BlackRock,Finance
+COST,Costco,Retail
+HD,Home Depot,Retail
+NKE,Nike,Retail
+HON,Honeywell,Manufacturing
+GE,General Electric,Manufacturing
+DE,Deere & Co,Manufacturing
+NEE,NextEra Energy,Energy
+SLB,Schlumberger,Energy
+OXY,Occidental,Energy
+WBD,Warner Bros,Media
+PARA,Paramount,Media
+ABNB,Airbnb,Consumer Services
+UBER,Uber,Consumer Services
+DAL,Delta Air Lines,Consumer Services
