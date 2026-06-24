@@ -8,7 +8,9 @@ LLY,Eli Lilly,Healthcare
 CVS,CVS Health,Healthcare
 JPM,JPMorgan,Finance
 GS,Goldman Sachs,Finance
-BLK,BlackRock,Finance
+
+MA,Mastercard,Finance
+
 COST,Costco,Retail
 HD,Home Depot,Retail
 NKE,Nike,Retail
@@ -19,7 +21,9 @@ NEE,NextEra Energy,Energy
 SLB,Schlumberger,Energy
 OXY,Occidental,Energy
 WBD,Warner Bros,Media
-PARA,Paramount,Media
+
+NFLX,Netflix,Media
+
 ABNB,Airbnb,Consumer Services
 UBER,Uber,Consumer Services
 DAL,Delta Air Lines,Consumer Services
