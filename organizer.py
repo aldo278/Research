@@ -32,7 +32,7 @@ def flatten_filing(filing_dir, full_text_path):
 def organize_company_folder(company_path):
     """
     For a single company folder:
-      - Create FullText, Filtered, and RiskFactors subfolders
+      - Create FullText, Filtered, RiskFactors, and Metadata subfolders
       - Move the contents of the 10-K folder into FullText
       - Delete the empty 10-K folder
     """
@@ -40,11 +40,13 @@ def organize_company_folder(company_path):
     full_text_path = company_path / "FullText"
     filtered_path = company_path / "Filtered"
     risk_factors_path = company_path / "RiskFactors"
+    metadata_path = company_path / "Metadata"
 
-    # Create the three subfolders
+    # Create the four subfolders
     full_text_path.mkdir(exist_ok=True)
     filtered_path.mkdir(exist_ok=True)
     risk_factors_path.mkdir(exist_ok=True)
+    metadata_path.mkdir(exist_ok=True)
 
     # Move each accession folder from 10-K directly into FullText
     if ten_k_path.exists():
