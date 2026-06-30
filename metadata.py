@@ -139,7 +139,7 @@ def generate_all_metadata():
             print(f"Processing {company_path.name}...")
             process_company(company_path, lookup)
 
-    print("Metadata generation complete.")
+    print("Metadata extraction complete.")
 
 
 if __name__ == "__main__":
