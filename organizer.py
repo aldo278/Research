@@ -38,13 +38,13 @@ def organize_company_folder(company_path):
     """
     ten_k_path = company_path / "10-K"
     full_text_path = company_path / "FullText"
-    filtered_path = company_path / "Filtered"
+    # filtered_path = company_path / "Filtered"  # No longer needed
     risk_factors_path = company_path / "RiskFactors"
     metadata_path = company_path / "Metadata"
 
     # Create the four subfolders
     full_text_path.mkdir(exist_ok=True)
-    filtered_path.mkdir(exist_ok=True)
+    # filtered_path.mkdir(exist_ok=True)  # No longer needed
     risk_factors_path.mkdir(exist_ok=True)
     metadata_path.mkdir(exist_ok=True)
 

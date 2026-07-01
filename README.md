@@ -1,6 +1,6 @@
 # Research
 
-This project is a research project that aims to extract risk factors from 10-K filings of public companies.
+This project aims to extract risk factors from 10-K filings of public companies.
 
 ### Setup
 There are several scripts here that are used to extract risk factors from 10-K filings of public companies.

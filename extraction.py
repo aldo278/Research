@@ -45,14 +45,20 @@ def clean_html_to_text(raw_html):
         try:
             soup = BeautifulSoup(sanitized, "html.parser")
         except Exception:
-            # Last resort: strip tags with a regex
-            text = re.sub(r"<[^>]+>", " ", document_html)
+            # Last resort: strip tags with a regex and insert line breaks after block tags
+            text = re.sub(r"<\s*(p|div|br|tr|h[1-6]|li|table)\b[^>]*>", "\n", document_html, flags=re.IGNORECASE)
+            text = re.sub(r"<[^>]+>", " ", text)
             text = re.sub(r"[ \t]+", " ", text)
+            text = re.sub(r"\n\s*\n", "\n\n", text)
             return text.strip()
 
-    text = soup.get_text(" ", strip=True)
+    # Use newline separator to preserve paragraph/heading structure
+    text = soup.get_text("\n", strip=True)
+    # Collapse multiple spaces/tabs on a single line, keep meaningful line breaks
     text = re.sub(r"[ \t]+", " ", text)
-    text = re.sub(r"\n\s*\n", "\n\n", text)
+    # Remove standalone page-number lines and empty lines for readability
+    lines = [line for line in text.splitlines() if line.strip() and not re.match(r"^\s*\d+\s*$", line.strip())]
+    text = "\n\n".join(lines)
     return text.strip()
 
 
