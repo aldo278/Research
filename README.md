@@ -16,7 +16,7 @@ Run `npm install requirements.txt` to install the dependencies.
 1. Run `python downloader.py` to download the 10-K filings.
 2. Run `python organizer.py` to organize the downloaded files.
 3. Run `python metadata.py` to get metadata and store them as json
-4. Run `python extraction.py` to extract the 1A Risk Factors section
+4. Run `python convert.py` to convert all the txt files to html for readibility
 
 
 
