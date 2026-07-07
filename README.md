@@ -18,6 +18,10 @@ Run `npm install requirements.txt` to install the dependencies.
 3. Run `python metadata.py` to get metadata and store them as json
 4. Run `python convert.py` to convert all the txt files to html for readibility
 
+## Notes
+- A script using beautiful soup was created to extract the 1A risk factors. It failed for some companies and it also seems to extracting too much text.
+- Might have to manually extract the 1A sections and store them in a txt file
+
 
 
 
