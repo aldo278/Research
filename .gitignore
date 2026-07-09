@@ -10,10 +10,6 @@ sec_data/
 # SEC Filings - but allow RiskFactors folders
 sec-edgar-filings/*/FullText/
 sec-edgar-filings/*/Filtered/
-sec-edgar-filings/*/10-K/
-sec-edgar-filings/*/
-sec-edgar-filings/*/*/
-!sec-edgar-filings/*/RiskFactors/
 
 # Extracted Risk Factors Files (old format)
 *_Risk_Factors_*.txt
