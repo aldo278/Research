@@ -77,5 +77,28 @@ def organize_all():
     print("Organization complete.")
 
 
+def create_risk_factors_files():
+    """Create empty risk factors files in existing RiskFactors folders."""
+    
+    for company_path in Path(FILINGS_DIR).iterdir():
+        if company_path.is_dir():
+            # Check if RiskFactors folder already exists
+            risk_factors_dir = company_path / "RiskFactors"
+            if risk_factors_dir.exists():
+                # Create empty files for different years
+                company_name = company_path.name
+                years = ["22", "23", "24"]  # Common years for 10-K filings
+                
+                for year in years:
+                    file_name = f"{company_name}_risk_factors_{year}.txt"
+                    file_path = risk_factors_dir / file_name
+                    if not file_path.exists():
+                        file_path.touch()
+                        print(f"Created {file_path}")
+            else:
+                print(f"  No RiskFactors folder for {company_path.name}, skipping")
+
+
 if __name__ == "__main__":
     organize_all()
+    create_risk_factors_files()
