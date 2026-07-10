@@ -11,6 +11,7 @@ sec_data/
 sec-edgar-filings/*/FullText/
 sec-edgar-filings/*/Filtered/
 
+
 # Extracted Risk Factors Files (old format)
 *_Risk_Factors_*.txt
 risk_factors*.txt
