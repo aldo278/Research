@@ -6,5 +6,9 @@
     "filingDate": "2024-02-02",
     "sourceLink": "https://www.sec.gov/Archives/edgar/data/40545/000004054524000027/0000040545-24-000027-index.htm",
     "accessionNumber": "0000040545-24-000027",
-    "fileFormat": "txt"
+    "fileFormat": "txt",
+    "ai_mentions": 4,
+    "words_in_1a": 10735,
+    "ai_analysis_date": "2026-07-14",
+    "ai_mentions_increase": 4
 }

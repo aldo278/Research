@@ -6,5 +6,9 @@
     "filingDate": "2023-11-03",
     "sourceLink": "https://www.sec.gov/Archives/edgar/data/320193/000032019323000106/0000320193-23-000106-index.htm",
     "accessionNumber": "0000320193-23-000106",
-    "fileFormat": "txt"
+    "fileFormat": "txt",
+    "ai_mentions": 2,
+    "words_in_1a": 9794,
+    "ai_analysis_date": "2026-07-14",
+    "ai_mentions_increase": 2
 }
