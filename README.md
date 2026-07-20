@@ -40,6 +40,16 @@ Created script to create one large master dataset.
 - The section for the Deere and Co corporation did not return the correct industry so I manually corrected it, only 3 fields
 
 
+### Scripts
+Created analysis.py to create tables and charts to visualize a few datasets
+- AI mentions per year
+- Average AI mentions by industry
+- Average filing length by industry
+
+Run analysis.py and a png file will save in the files directory
+
+
+
 
 
 
