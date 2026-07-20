@@ -34,6 +34,12 @@ Identify how many times AI is mentioned in the 1A section for each company. Iden
 - words_in_1a: number of words in the 1A section
 
 
+### Dataset
+added a "section" field to the metadata. Removed the "AI_mention_increase" from metadata.
+Created script to create one large master dataset.
+- The section for the Deere and Co corporation did not return the correct industry so I manually corrected it, only 3 fields
+
+
 
 
 
