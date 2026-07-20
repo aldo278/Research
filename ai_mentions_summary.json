@@ -4,409 +4,409 @@
     "AbbottLabs": {
       "2022": {
         "ai_mentions": 0,
-        "ai_mentions_increase": 0,
-        "words_in_1a": 4318
+        "words_in_1a": 4318,
+        "sector": "Healthcare"
       },
       "2023": {
         "ai_mentions": 0,
-        "ai_mentions_increase": 0,
-        "words_in_1a": 4763
+        "words_in_1a": 4763,
+        "sector": "Healthcare"
       },
       "2024": {
         "ai_mentions": 0,
-        "ai_mentions_increase": 0,
-        "words_in_1a": 4870
+        "words_in_1a": 4870,
+        "sector": "Healthcare"
       }
     },
     "Airbnb": {
       "2022": {
         "ai_mentions": 9,
-        "ai_mentions_increase": 0,
-        "words_in_1a": 46920
+        "words_in_1a": 46920,
+        "sector": "Consumer Services"
       },
       "2023": {
         "ai_mentions": 10,
-        "ai_mentions_increase": 1,
-        "words_in_1a": 47815
+        "words_in_1a": 47815,
+        "sector": "Consumer Services"
       },
       "2024": {
         "ai_mentions": 59,
-        "ai_mentions_increase": 49,
-        "words_in_1a": 47777
+        "words_in_1a": 47777,
+        "sector": "Consumer Services"
       }
     },
     "Alphabet": {
       "2022": {
         "ai_mentions": 2,
-        "ai_mentions_increase": 0,
-        "words_in_1a": 11667
+        "words_in_1a": 11667,
+        "sector": "Technology"
       },
       "2023": {
         "ai_mentions": 2,
-        "ai_mentions_increase": 0,
-        "words_in_1a": 10815
+        "words_in_1a": 10815,
+        "sector": "Technology"
       },
       "2024": {
         "ai_mentions": 32,
-        "ai_mentions_increase": 30,
-        "words_in_1a": 11290
+        "words_in_1a": 11290,
+        "sector": "Technology"
       }
     },
     "Apple": {
       "2022": {
         "ai_mentions": 0,
-        "ai_mentions_increase": 0,
-        "words_in_1a": 10221
+        "words_in_1a": 10221,
+        "sector": "Technology"
       },
       "2023": {
         "ai_mentions": 2,
-        "ai_mentions_increase": 2,
-        "words_in_1a": 9794
+        "words_in_1a": 9794,
+        "sector": "Technology"
       },
       "2024": {
         "ai_mentions": 5,
-        "ai_mentions_increase": 3,
-        "words_in_1a": 9913
+        "words_in_1a": 9913,
+        "sector": "Technology"
       }
     },
     "CVSHealth": {
       "2022": {
         "ai_mentions": 0,
-        "ai_mentions_increase": 0,
-        "words_in_1a": 22965
+        "words_in_1a": 22965,
+        "sector": "Healthcare"
       },
       "2023": {
         "ai_mentions": 0,
-        "ai_mentions_increase": 0,
-        "words_in_1a": 23175
+        "words_in_1a": 23175,
+        "sector": "Healthcare"
       },
       "2024": {
         "ai_mentions": 0,
-        "ai_mentions_increase": 0,
-        "words_in_1a": 23280
+        "words_in_1a": 23280,
+        "sector": "Healthcare"
       }
     },
     "Costco": {
       "2022": {
         "ai_mentions": 0,
-        "ai_mentions_increase": 0,
-        "words_in_1a": 5847
+        "words_in_1a": 5847,
+        "sector": "Retail"
       },
       "2023": {
         "ai_mentions": 0,
-        "ai_mentions_increase": 0,
-        "words_in_1a": 5815
+        "words_in_1a": 5815,
+        "sector": "Retail"
       },
       "2024": {
         "ai_mentions": 2,
-        "ai_mentions_increase": 2,
-        "words_in_1a": 5917
+        "words_in_1a": 5917,
+        "sector": "Retail"
       }
     },
     "DeereCo": {
       "2022": {
         "ai_mentions": 0,
-        "ai_mentions_increase": 0,
-        "words_in_1a": 8866
+        "words_in_1a": 8866,
+        "sector": null
       },
       "2023": {
         "ai_mentions": 2,
-        "ai_mentions_increase": 2,
-        "words_in_1a": 8493
+        "words_in_1a": 8493,
+        "sector": null
       },
       "2024": {
         "ai_mentions": 8,
-        "ai_mentions_increase": 6,
-        "words_in_1a": 8532
+        "words_in_1a": 8532,
+        "sector": null
       }
     },
     "DeltaAirLines": {
       "2022": {
         "ai_mentions": 0,
-        "ai_mentions_increase": 0,
-        "words_in_1a": 8487
+        "words_in_1a": 8487,
+        "sector": "Consumer Services"
       },
       "2023": {
         "ai_mentions": 0,
-        "ai_mentions_increase": 0,
-        "words_in_1a": 8135
+        "words_in_1a": 8135,
+        "sector": "Consumer Services"
       },
       "2024": {
         "ai_mentions": 0,
-        "ai_mentions_increase": 0,
-        "words_in_1a": 7424
+        "words_in_1a": 7424,
+        "sector": "Consumer Services"
       }
     },
     "EliLilly": {
       "2022": {
         "ai_mentions": 0,
-        "ai_mentions_increase": 0,
-        "words_in_1a": 5881
+        "words_in_1a": 5881,
+        "sector": "Healthcare"
       },
       "2023": {
         "ai_mentions": 0,
-        "ai_mentions_increase": 0,
-        "words_in_1a": 7109
+        "words_in_1a": 7109,
+        "sector": "Healthcare"
       },
       "2024": {
         "ai_mentions": 21,
-        "ai_mentions_increase": 21,
-        "words_in_1a": 8863
+        "words_in_1a": 8863,
+        "sector": "Healthcare"
       }
     },
     "GeneralElectric": {
       "2022": {
         "ai_mentions": 0,
-        "ai_mentions_increase": 0,
-        "words_in_1a": 8973
+        "words_in_1a": 8973,
+        "sector": "Manufacturing"
       },
       "2023": {
         "ai_mentions": 0,
-        "ai_mentions_increase": 0,
-        "words_in_1a": 10365
+        "words_in_1a": 10365,
+        "sector": "Manufacturing"
       },
       "2024": {
         "ai_mentions": 4,
-        "ai_mentions_increase": 4,
-        "words_in_1a": 10735
+        "words_in_1a": 10735,
+        "sector": "Manufacturing"
       }
     },
     "GoldmanSachs": {
       "2022": {
         "ai_mentions": 0,
-        "ai_mentions_increase": 0,
-        "words_in_1a": 19824
+        "words_in_1a": 19824,
+        "sector": "Finance"
       },
       "2023": {
         "ai_mentions": 0,
-        "ai_mentions_increase": 0,
-        "words_in_1a": 21233
+        "words_in_1a": 21233,
+        "sector": "Finance"
       },
       "2024": {
         "ai_mentions": 24,
-        "ai_mentions_increase": 24,
-        "words_in_1a": 21253
+        "words_in_1a": 21253,
+        "sector": "Finance"
       }
     },
     "HomeDepot": {
       "2022": {
         "ai_mentions": 0,
-        "ai_mentions_increase": 0,
-        "words_in_1a": 9842
+        "words_in_1a": 9842,
+        "sector": "Retail"
       },
       "2023": {
         "ai_mentions": 0,
-        "ai_mentions_increase": 0,
-        "words_in_1a": 9881
+        "words_in_1a": 9881,
+        "sector": "Retail"
       },
       "2024": {
         "ai_mentions": 3,
-        "ai_mentions_increase": 3,
-        "words_in_1a": 9849
+        "words_in_1a": 9849,
+        "sector": "Retail"
       }
     },
     "Honeywell": {
       "2022": {
         "ai_mentions": 0,
-        "ai_mentions_increase": 0,
-        "words_in_1a": 6716
+        "words_in_1a": 6716,
+        "sector": "Manufacturing"
       },
       "2023": {
         "ai_mentions": 0,
-        "ai_mentions_increase": 0,
-        "words_in_1a": 6093
+        "words_in_1a": 6093,
+        "sector": "Manufacturing"
       },
       "2024": {
         "ai_mentions": 8,
-        "ai_mentions_increase": 8,
-        "words_in_1a": 6712
+        "words_in_1a": 6712,
+        "sector": "Manufacturing"
       }
     },
     "JPMorgan": {
       "2022": {
         "ai_mentions": 0,
-        "ai_mentions_increase": 0,
-        "words_in_1a": 18304
+        "words_in_1a": 18304,
+        "sector": "Finance"
       },
       "2023": {
         "ai_mentions": 0,
-        "ai_mentions_increase": 0,
-        "words_in_1a": 17724
+        "words_in_1a": 17724,
+        "sector": "Finance"
       },
       "2024": {
         "ai_mentions": 5,
-        "ai_mentions_increase": 5,
-        "words_in_1a": 18852
+        "words_in_1a": 18852,
+        "sector": "Finance"
       }
     },
     "Mastercard": {
       "2022": {
         "ai_mentions": 4,
-        "ai_mentions_increase": 0,
-        "words_in_1a": 11381
+        "words_in_1a": 11381,
+        "sector": "Finance"
       },
       "2023": {
         "ai_mentions": 4,
-        "ai_mentions_increase": 0,
-        "words_in_1a": 12186
+        "words_in_1a": 12186,
+        "sector": "Finance"
       },
       "2024": {
         "ai_mentions": 21,
-        "ai_mentions_increase": 17,
-        "words_in_1a": 12278
+        "words_in_1a": 12278,
+        "sector": "Finance"
       }
     },
     "Microsoft": {
       "2022": {
         "ai_mentions": 16,
-        "ai_mentions_increase": 0,
-        "words_in_1a": 10360
+        "words_in_1a": 10360,
+        "sector": "Technology"
       },
       "2023": {
         "ai_mentions": 40,
-        "ai_mentions_increase": 24,
-        "words_in_1a": 10091
+        "words_in_1a": 10091,
+        "sector": "Technology"
       },
       "2024": {
         "ai_mentions": 55,
-        "ai_mentions_increase": 15,
-        "words_in_1a": 10863
+        "words_in_1a": 10863,
+        "sector": "Technology"
       }
     },
     "NVIDIA": {
       "2022": {
         "ai_mentions": 15,
-        "ai_mentions_increase": 0,
-        "words_in_1a": 10825
+        "words_in_1a": 10825,
+        "sector": "Technology"
       },
       "2023": {
         "ai_mentions": 31,
-        "ai_mentions_increase": 16,
-        "words_in_1a": 13156
+        "words_in_1a": 13156,
+        "sector": "Technology"
       },
       "2024": {
         "ai_mentions": 52,
-        "ai_mentions_increase": 21,
-        "words_in_1a": 16048
+        "words_in_1a": 16048,
+        "sector": "Technology"
       }
     },
     "Netflix": {
       "2022": {
         "ai_mentions": 0,
-        "ai_mentions_increase": 0,
-        "words_in_1a": 10254
+        "words_in_1a": 10254,
+        "sector": "Media"
       },
       "2023": {
         "ai_mentions": 0,
-        "ai_mentions_increase": 0,
-        "words_in_1a": 10395
+        "words_in_1a": 10395,
+        "sector": "Media"
       },
       "2024": {
         "ai_mentions": 2,
-        "ai_mentions_increase": 2,
-        "words_in_1a": 10482
+        "words_in_1a": 10482,
+        "sector": "Media"
       }
     },
     "NextEraEnergy": {
       "2022": {
         "ai_mentions": 0,
-        "ai_mentions_increase": 0,
-        "words_in_1a": 10621
+        "words_in_1a": 10621,
+        "sector": "Energy"
       },
       "2023": {
         "ai_mentions": 0,
-        "ai_mentions_increase": 0,
-        "words_in_1a": 11060
+        "words_in_1a": 11060,
+        "sector": "Energy"
       },
       "2024": {
         "ai_mentions": 1,
-        "ai_mentions_increase": 1,
-        "words_in_1a": 11177
+        "words_in_1a": 11177,
+        "sector": "Energy"
       }
     },
     "Nike": {
       "2022": {
         "ai_mentions": 0,
-        "ai_mentions_increase": 0,
-        "words_in_1a": 13843
+        "words_in_1a": 13843,
+        "sector": "Retail"
       },
       "2023": {
         "ai_mentions": 0,
-        "ai_mentions_increase": 0,
-        "words_in_1a": 13821
+        "words_in_1a": 13821,
+        "sector": "Retail"
       },
       "2024": {
         "ai_mentions": 6,
-        "ai_mentions_increase": 6,
-        "words_in_1a": 14663
+        "words_in_1a": 14663,
+        "sector": "Retail"
       }
     },
     "Occidental": {
       "2022": {
         "ai_mentions": 0,
-        "ai_mentions_increase": 0,
-        "words_in_1a": 7098
+        "words_in_1a": 7098,
+        "sector": "Energy"
       },
       "2023": {
         "ai_mentions": 0,
-        "ai_mentions_increase": 0,
-        "words_in_1a": 9170
+        "words_in_1a": 9170,
+        "sector": "Energy"
       },
       "2024": {
         "ai_mentions": 0,
-        "ai_mentions_increase": 0,
-        "words_in_1a": 13372
+        "words_in_1a": 13372,
+        "sector": "Energy"
       }
     },
     "Schlumberger": {
       "2022": {
         "ai_mentions": 1,
-        "ai_mentions_increase": 0,
-        "words_in_1a": 4008
+        "words_in_1a": 4008,
+        "sector": "Energy"
       },
       "2023": {
         "ai_mentions": 1,
-        "ai_mentions_increase": 0,
-        "words_in_1a": 4240
+        "words_in_1a": 4240,
+        "sector": "Energy"
       },
       "2024": {
         "ai_mentions": 3,
-        "ai_mentions_increase": 2,
-        "words_in_1a": 4471
+        "words_in_1a": 4471,
+        "sector": "Energy"
       }
     },
     "UBER": {
       "2022": {
         "ai_mentions": 6,
-        "ai_mentions_increase": 0,
-        "words_in_1a": 35103
+        "words_in_1a": 35103,
+        "sector": "Consumer Services"
       },
       "2023": {
         "ai_mentions": 6,
-        "ai_mentions_increase": 0,
-        "words_in_1a": 33905
+        "words_in_1a": 33905,
+        "sector": "Consumer Services"
       },
       "2024": {
         "ai_mentions": 6,
-        "ai_mentions_increase": 0,
-        "words_in_1a": 33905
+        "words_in_1a": 33905,
+        "sector": "Consumer Services"
       }
     },
     "WarnerBros": {
       "2022": {
         "ai_mentions": 0,
-        "ai_mentions_increase": 0,
-        "words_in_1a": 11173
+        "words_in_1a": 11173,
+        "sector": "Media"
       },
       "2023": {
         "ai_mentions": 0,
-        "ai_mentions_increase": 0,
-        "words_in_1a": 11791
+        "words_in_1a": 11791,
+        "sector": "Media"
       },
       "2024": {
         "ai_mentions": 6,
-        "ai_mentions_increase": 6,
-        "words_in_1a": 11680
+        "words_in_1a": 11680,
+        "sector": "Media"
       }
     }
   },
@@ -424,5 +424,5 @@
       "total_companies": 24
     }
   },
-  "analysis_date": "2026-07-14"
+  "analysis_date": "2026-07-20"
 }

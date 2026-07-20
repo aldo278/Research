@@ -1,6 +1,7 @@
 import os
 import json
 import re
+import csv
 from pathlib import Path
 from collections import defaultdict
 
@@ -69,9 +70,27 @@ def get_risk_factors_content(company_name, year):
         print(f"  Error reading risk factors for {company_name} {year}: {e}")
         return None
 
+def get_company_sector(company_name):
+    """
+    Get the sector/industry for a company from companies.csv.
+    """
+    try:
+        with open('companies.csv', 'r', encoding='utf-8') as f:
+            reader = csv.DictReader(f)
+            for row in reader:
+                # Match company name (case-insensitive, ignoring spaces)
+                csv_company = row['company'].replace(' ', '').lower()
+                target_company = company_name.replace(' ', '').lower()
+                if csv_company == target_company:
+                    return row['industry']
+    except Exception as e:
+        print(f"  Error reading companies.csv: {e}")
+    
+    return None
+
 def update_metadata_file(metadata_file_path, company_name, year):
     """
-    Update a single metadata file with AI analysis data.
+    Update a single metadata file with AI analysis data and sector.
     """
     try:
         # Read existing metadata
@@ -89,91 +108,34 @@ def update_metadata_file(metadata_file_path, company_name, year):
         ai_mentions = count_ai_mentions(risk_factors_content)
         word_count = count_words(risk_factors_content)
         
+        # Get company sector
+        sector = get_company_sector(company_name)
+        
         # Add new fields to metadata
         metadata['ai_mentions'] = ai_mentions
         metadata['words_in_1a'] = word_count
-        metadata['ai_analysis_date'] = '2026-07-14'
+        metadata['sector'] = sector
+        metadata['ai_analysis_date'] = '2026-07-20'
+        
+        # Remove ai_mentions_increase if it exists
+        if 'ai_mentions_increase' in metadata:
+            del metadata['ai_mentions_increase']
         
         # Save updated metadata
         with open(metadata_file_path, 'w', encoding='utf-8') as f:
             json.dump(metadata, f, indent=4)
         
-        print(f"  Updated {metadata_file_path.name}: {ai_mentions} AI mentions, {word_count} words")
+        print(f"  Updated {metadata_file_path.name}: {ai_mentions} AI mentions, {word_count} words, sector: {sector}")
         return True
         
     except Exception as e:
         print(f"  Error updating {metadata_file_path}: {e}")
         return False
 
-def calculate_ai_increases():
-    """
-    Calculate year-over-year AI mentions increases and update metadata files.
-    """
-    base_dir = Path("sec-edgar-filings")
-    
-    # Collect all metadata data by company
-    company_data = defaultdict(dict)
-    
-    # First pass: collect all AI mentions data
-    for company_path in sorted(base_dir.iterdir()):
-        if not company_path.is_dir():
-            continue
-        
-        company_name = company_path.name
-        metadata_path = company_path / "Metadata"
-        
-        if not metadata_path.exists():
-            continue
-        
-        for metadata_file in sorted(metadata_path.glob("*-metadata.json")):
-            try:
-                with open(metadata_file, 'r', encoding='utf-8') as f:
-                    metadata = json.load(f)
-                
-                if 'ai_mentions' in metadata and 'filingYear' in metadata:
-                    year = metadata['filingYear']
-                    ai_mentions = metadata['ai_mentions']
-                    company_data[company_name][year] = {
-                        'ai_mentions': ai_mentions,
-                        'file_path': metadata_file
-                    }
-                    
-            except Exception as e:
-                print(f"  Error reading {metadata_file}: {e}")
-    
-    # Second pass: calculate increases and update files
-    for company_name, years_data in company_data.items():
-        sorted_years = sorted(years_data.keys())
-        
-        for i, year in enumerate(sorted_years):
-            if i == 0:
-                # First year has no previous year to compare to
-                increase = 0
-            else:
-                prev_year = sorted_years[i-1]
-                current_mentions = years_data[year]['ai_mentions']
-                prev_mentions = years_data[prev_year]['ai_mentions']
-                increase = current_mentions - prev_mentions
-            
-            # Update the metadata file with the increase
-            metadata_file = years_data[year]['file_path']
-            try:
-                with open(metadata_file, 'r', encoding='utf-8') as f:
-                    metadata = json.load(f)
-                
-                metadata['ai_mentions_increase'] = increase
-                
-                with open(metadata_file, 'w', encoding='utf-8') as f:
-                    json.dump(metadata, f, indent=4)
-                
-                print(f"  Added AI increase for {company_name} {year}: {increase}")
-                
-            except Exception as e:
-                print(f"  Error updating AI increase for {company_name} {year}: {e}")
 
 def update_all_metadata():
     """
-    Update all metadata files with AI analysis data.
+    Update all metadata files with AI analysis data and sector.
     """
     base_dir = Path("sec-edgar-filings")
     
@@ -181,7 +143,7 @@ def update_all_metadata():
         print(f"Directory {base_dir} not found")
         return
     
-    print("Adding AI analysis to existing metadata files...")
+    print("Adding AI analysis and sector to existing metadata files...")
     
     updated_count = 0
     
@@ -210,13 +172,8 @@ def update_all_metadata():
                 if update_metadata_file(metadata_file, company_name, year_2digit):
                     updated_count += 1
     
-    print(f"\nUpdated {updated_count} metadata files with AI analysis")
-    
-    # Calculate year-over-year increases
-    print("\nCalculating AI mentions increases...")
-    calculate_ai_increases()
-    
-    print("\nAI analysis complete!")
+    print(f"\nUpdated {updated_count} metadata files with AI analysis and sector")
+    print("\nMetadata update complete!")
 
 def generate_summary_report():
     """
@@ -227,7 +184,7 @@ def generate_summary_report():
         'total_companies': 0,
         'companies': {},
         'yearly_totals': defaultdict(lambda: {'total_ai_mentions': 0, 'total_companies': 0}),
-        'analysis_date': '2026-07-14'
+        'analysis_date': '2026-07-20'
     }
     
     for company_path in sorted(base_dir.iterdir()):
@@ -253,8 +210,8 @@ def generate_summary_report():
                     year = metadata['filingYear']
                     company_data[str(year)] = {
                         'ai_mentions': metadata['ai_mentions'],
-                        'ai_mentions_increase': metadata.get('ai_mentions_increase', 0),
-                        'words_in_1a': metadata['words_in_1a']
+                        'words_in_1a': metadata['words_in_1a'],
+                        'sector': metadata.get('sector', 'Unknown')
                     }
                     
                     # Add to yearly totals
