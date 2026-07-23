@@ -49,6 +49,16 @@ Created analysis.py to create tables and charts to visualize a few datasets
 Run analysis.py and a png file will save in the files directory
 
 
+Next step is to create another dataset with pandas. it should include the following columns:
+- Company
+- Ticker
+- Sector
+- Filing_Year
+- Paragraph_id
+- Passage
+- AI_keywords
+
+
 
 
 
