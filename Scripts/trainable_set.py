@@ -83,32 +83,19 @@ df = pd.DataFrame({
 })
 
 
-# attempting to make the function myself because AI cant
-def get_AI_passage():
-    # tested on one filing so now i need to load all of them
-    # loading the dataset.csv file
-    dataset_df = pd.read_csv("../dataset.csv")
+# Function to extract AI passages from a single filing
+def extract_passages_from_file(file_path, keywords):
+    """Extract AI passages from a single filing file."""
+    pattern_pieces = [rf"\b{re.escape(word)}\b" for word in keywords]
+    ai_regex = re.compile("|".join(pattern_pieces), re.IGNORECASE)
+    sentence_end_regex = re.compile(r'(?<!\bU\.S)(?<!\bInc)(?<!\bCo)(?<!\bvs)\.\s+(?=[A-Z""])')
 
-    for index, row in dataset_df.iterrows():
-        company = row['Company']
-        year = row['Year']
-
-        # Dir is no longer a constant 
-        filing_path = get_filing_path(company, year)
-  
-    
-    pattern_pieces = [rf"\b{re.escape(word)}\b" for word in ai_keywords] # using the keywords from the ai_keywords list
-    ai_regex = re.compile("|".join(pattern_pieces), re.IGNORECASE) # combining the keywords into a single regex pattern
-
-    # creating the ending of the sentence that contains a keyword
-    sentence_end_regex = re.compile(r'(?<!\bU\.S)(?<!\bInc)(?<!\bCo)(?<!\bvs)\.\s+(?=[A-Z"“])')
-
-    with open(filing_path, 'r', encoding="utf-8") as file:
+    with open(file_path, 'r', encoding="utf-8") as file:
         full_text = file.read().replace('\n', ' ')
-        full_text = re.sub(r'\s+', ' ', full_text) # multiple spaces to one
+        full_text = re.sub(r'\s+', ' ', full_text)
     
     sentences = sentence_end_regex.split(full_text)
-    extracted_passages = [] # keep track of the passages that contain AI keywords
+    extracted_passages = []
     
     for sentence in sentences:
         clean_sentence = sentence.strip()
@@ -120,7 +107,83 @@ def get_AI_passage():
    
     return extracted_passages
 
-print(f"First passage: {get_AI_passage()[0]}")
+# Function to get keywords found in a passage
+def get_keywords_in_passage(passage, keywords):
+    """Return list of keywords found in the passage."""
+    passage_lower = passage.lower()
+    found = []
+    for keyword in keywords:
+        if keyword.lower() in passage_lower:
+            found.append(keyword)
+    return ', '.join(found)
+
+# Iterate through each row and extract AI passages
+passages_list = []
+keywords_list = []
+paragraph_ids = []
+
+for idx, row in df.iterrows():
+    company = row['Company']
+    year = row['Filing_Year']
+    
+    # Get filing path
+    filing_path = get_filing_path(company, year)
+    
+    if filing_path:
+        # Extract AI passages
+        passages = extract_passages_from_file(filing_path, ai_keywords)
+        
+        # Extract keywords found in each passage
+        found_keywords = []
+        for passage in passages:
+            found_keywords.append(get_keywords_in_passage(passage, ai_keywords))
+        
+        # Assign paragraph IDs
+        para_ids = list(range(len(passages)))
+        
+        passages_list.append(passages)
+        keywords_list.append(found_keywords)
+        paragraph_ids.append(para_ids)
+    else:
+        passages_list.append([])
+        keywords_list.append([])
+        paragraph_ids.append([])
+
+# Expand the dataframe to have one row per passage
+expanded_data = []
+for idx, row in df.iterrows():
+    passages = passages_list[idx]
+    keywords = keywords_list[idx]
+    para_ids = paragraph_ids[idx]
+    
+    if passages:
+        for i, passage in enumerate(passages):
+            expanded_data.append({
+                'Company': row['Company'],
+                'Ticker': row['Ticker'],
+                'Sector': row['Sector'],
+                'Filing_Year': row['Filing_Year'],
+                'Paragraph_id': para_ids[i],
+                'Passage': passage,
+                'AI_keywords': keywords[i]
+            })
+    else:
+        # Add empty row if no passages found
+        expanded_data.append({
+            'Company': row['Company'],
+            'Ticker': row['Ticker'],
+            'Sector': row['Sector'],
+            'Filing_Year': row['Filing_Year'],
+            'Paragraph_id': None,
+            'Passage': None,
+            'AI_keywords': None
+        })
+
+# Create final expanded dataframe
+df = pd.DataFrame(expanded_data)
+
+print(df.head())
+print(f"\nTotal rows: {len(df)}")
 
 
 
