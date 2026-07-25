@@ -118,9 +118,13 @@ def get_AI_passage():
     DIR = r"z:\Devin\Research\sec-edgar-filings\Microsoft\RiskFactors\Microsoft_risk_factors_24.txt" 
     ai_count = 0
     keyword = re.compile(r'\bAI\b', re.IGNORECASE)  # re ensures AI is a whole word
+
+    pattern_pieces = [rf"\b{re.escape(word)}\b" for word in ai_keywords]
+    ai_regex = re.compile("|".join(pattern_pieces), re.IGNORECASE)
+
     with open(DIR, 'r', encoding="utf-8") as file:
         for line in file:
-            matches = keyword.findall(line)
+            matches = ai_regex.findall(line)
             if matches:
                 ai_count += len(matches)
     
