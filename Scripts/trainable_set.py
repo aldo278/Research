@@ -110,123 +110,21 @@ df = pd.DataFrame({
     'AI_keywords': None
 })
 
-# Iterate through each row and extract AI passages
-passages_list = []
-keywords_list = []
-paragraph_ids = []
 
-for idx, row in df.iterrows():
-    company = row['Company']
-    year = row['Filing_Year']
+#attempting to make the function myself because AI cant
+def get_AI_passage():
+    # for now, I am going to read only one filing, the 2024 microsoft risk factors
+    # directory is incredibly long so im going to make it a constant
+    DIR = r"z:\Devin\Research\sec-edgar-filings\Microsoft\RiskFactors\Microsoft_risk_factors_24.txt" 
+    ai_count = 0
+    keyword = re.compile(r'\bAI\b', re.IGNORECASE)  # re ensures AI is a whole word
+    with open(DIR, 'r', encoding="utf-8") as file:
+        for line in file:
+            matches = keyword.findall(line)
+            if matches:
+                ai_count += len(matches)
     
-    # Get filing path
-    filing_path = get_filing_path(company, year)
-    
-    if filing_path:
-        # Read filing text
-        with open(filing_path, 'r', encoding='utf-8') as f:
-            text = f.read()
-        
-        # Extract AI passages
-        passages = extract_ai_passages(text, ai_keywords)
-        
-        # Extract keywords found in each passage
-        found_keywords = []
-        for passage in passages:
-            passage_keywords = []
-            passage_lower = passage.lower()
-            for keyword in ai_keywords:
-                if keyword.lower() in passage_lower:
-                    passage_keywords.append(keyword)
-            found_keywords.append(', '.join(passage_keywords))
-        
-        # Assign paragraph IDs
-        para_ids = list(range(len(passages)))
-        
-        passages_list.append(passages)
-        keywords_list.append(found_keywords)
-        paragraph_ids.append(para_ids)
-    else:
-        passages_list.append([])
-        keywords_list.append([])
-        paragraph_ids.append([])
+    return f"ai_count: {ai_count}"
 
-# Expand the dataframe to have one row per passage
-expanded_data = []
-for idx, row in df.iterrows():
-    passages = passages_list[idx]
-    keywords = keywords_list[idx]
-    para_ids = paragraph_ids[idx]
-    
-    if passages:
-        for i, passage in enumerate(passages):
-            expanded_data.append({
-                'Company': row['Company'],
-                'Ticker': row['Ticker'],
-                'Sector': row['Sector'],
-                'Filing_Year': row['Filing_Year'],
-                'Paragraph_id': para_ids[i],
-                'Passage': passage,
-                'AI_keywords': keywords[i]
-            })
-    else:
-        # Add empty row if no passages found
-        expanded_data.append({
-            'Company': row['Company'],
-            'Ticker': row['Ticker'],
-            'Sector': row['Sector'],
-            'Filing_Year': row['Filing_Year'],
-            'Paragraph_id': None,
-            'Passage': None,
-            'AI_keywords': None
-        })
 
-# Create final expanded dataframe
-df = pd.DataFrame(expanded_data)
-
-print(df.head())
-print(f"\nTotal rows: {len(df)}")
-
-# ===== TEST SECTION - Test single filing before running full script =====
-print("\n" + "="*60)
-print("TEST: Single filing extraction (Microsoft 2024)")
-print("="*60)
-
-test_company = 'Microsoft'
-test_year = 2024
-test_path = get_filing_path(test_company, test_year)
-
-if test_path:
-    print(f"Filing path: {test_path}")
-    with open(test_path, 'r', encoding='utf-8') as f:
-        test_text = f.read()
-    
-    print(f"Text length: {len(test_text)} characters")
-    
-    # DEBUG: Test with known AI sentence
-    test_sentence = "We are investing in artificial intelligence (\"AI\") across the entire company and infusing generative AI capabilities into our consumer and commercial offerings."
-    print(f"\nDEBUG: Test sentence: {test_sentence}")
-    print(f"Contains 'AI': {'ai' in test_sentence.lower()}")
-    print(f"Contains 'artificial intelligence': {'artificial intelligence' in test_sentence.lower()}")
-    
-    # DEBUG: Check first few sentences
-    print(f"\nDEBUG: First 5 sentences from split('. '):")
-    sentences = test_text.split('. ')
-    for i, sent in enumerate(sentences[:5]):
-        print(f"{i+1}: {sent[:100]}...")
-    
-    test_passages = extract_ai_passages(test_text, ai_keywords)
-    print(f"\nNumber of AI passages found: {len(test_passages)}")
-    
-    if test_passages:
-        print("\nFirst 3 passages:")
-        for i, passage in enumerate(test_passages[:3]):
-            print(f"\n--- Passage {i+1} ---")
-            print(passage[:200] + "..." if len(passage) > 200 else passage)
-            
-            # Show keywords found
-            passage_lower = passage.lower()
-            found = [k for k in ai_keywords if k.lower() in passage_lower]
-            print(f"Keywords: {', '.join(found)}")
-else:
-    print(f"Filing not found for {test_company} {test_year}")
+print(get_AI_passage())
