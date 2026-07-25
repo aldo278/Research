@@ -47,6 +47,7 @@ Created analysis.py to create tables and charts to visualize a few datasets
 - Average filing length by industry
 
 Run analysis.py and a png file will save in the files directory
+Run build_dataset.py to create the master dataset
 
 
 Next step is to create another dataset with pandas. it should include the following columns:
@@ -57,6 +58,8 @@ Next step is to create another dataset with pandas. it should include the follow
 - Paragraph_id
 - Passage
 - AI_keywords
+
+This is the dataset where we can start annotation before fine tuning the model
 
 
 

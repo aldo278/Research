@@ -1,0 +1,94 @@
+keyword,category
+artificial intelligence,General AI
+AI,General AI
+A.I.,General AI
+machine learning,Machine Learning
+ML,Machine Learning
+deep learning,Machine Learning
+neural network,Machine Learning
+neural networks,Machine Learning
+generative AI,Generative AI
+GenAI,Generative AI
+foundation model,Generative AI
+foundation models,Generative AI
+large language model,LLM
+large language models,LLM
+LLM,LLM
+LLMs,LLM
+transformer model,LLM
+GPT,LLM
+ChatGPT,LLM
+Copilot,AI Assistant
+AI assistant,AI Assistant
+AI system,General AI
+AI systems,General AI
+AI model,General AI
+AI models,General AI
+AI technology,General AI
+AI technologies,General AI
+intelligent automation,Automation
+automation,Automation
+automated decision-making,Automation
+autonomous system,Automation
+autonomous systems,Automation
+algorithm,Algorithms
+algorithms,Algorithms
+algorithmic,Algorithms
+predictive model,Predictive AI
+predictive models,Predictive AI
+predictive analytics,Predictive AI
+computer vision,AI Application
+natural language processing,NLP
+NLP,NLP
+speech recognition,NLP
+image recognition,Computer Vision
+recommendation engine,AI Application
+recommendation system,AI Application
+recommender system,AI Application
+intelligent agent,AI Agent
+AI agent,AI Agent
+AI agents,AI Agent
+autonomous agent,AI Agent
+autonomous agents,AI Agent
+reinforcement learning,Machine Learning
+supervised learning,Machine Learning
+unsupervised learning,Machine Learning
+self-supervised learning,Machine Learning
+fine-tuning,Model Training
+pretrained model,Model Training
+pre-trained model,Model Training
+inference model,Model Training
+model inference,Model Training
+hallucination,AI Risk
+hallucinations,AI Risk
+model drift,AI Risk
+model bias,AI Risk
+algorithmic bias,AI Risk
+AI bias,AI Risk
+explainable AI,Responsible AI
+XAI,Responsible AI
+responsible AI,Responsible AI
+trustworthy AI,Responsible AI
+ethical AI,Responsible AI
+AI governance,AI Governance
+AI regulation,AI Governance
+AI regulations,AI Governance
+AI compliance,AI Governance
+AI ethics,AI Governance
+AI safety,AI Governance
+AI security,AI Governance
+AI risk,AI Risk
+AI risks,AI Risk
+AI-generated,Generative AI
+synthetic media,Generative AI
+synthetic content,Generative AI
+deepfake,Generative AI
+deepfakes,Generative AI
+prompt engineering,LLM
+prompt injection,AI Security
+retrieval-augmented generation,RAG
+RAG,RAG
+vector database,RAG
+embedding,Embeddings
+embeddings,Embeddings
+semantic search,Embeddings
