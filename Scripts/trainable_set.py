@@ -9,34 +9,6 @@ script_dir = os.path.dirname(os.path.abspath(__file__))
 keywords_df = pd.read_csv(os.path.join(script_dir, '..', 'AI_keywords.csv'))
 ai_keywords = keywords_df['keyword'].tolist()
 
-def extract_ai_passages(text, keywords):
-    """
-    Extract sentences containing AI keywords from text.
-    Splits text by '. ' (period + space) to identify sentences.
-    
-    Args:
-        text (str): The full text to search
-        keywords (list): List of AI keywords to search for
-        
-    Returns:
-        list: List of sentences containing AI keywords
-    """
-    if not text or pd.isna(text):
-        return []
-    
-    # Split by period + space to get sentences
-    sentences = text.split('. ')
-    
-    # Find sentences containing any keyword (case-insensitive)
-    ai_passages = []
-    for sentence in sentences:
-        sentence_lower = sentence.lower()
-        for keyword in keywords:
-            if keyword.lower() in sentence_lower:
-                ai_passages.append(sentence.strip())
-                break  # Only add sentence once even if multiple keywords match
-    
-    return ai_passages
 
 def get_filing_path(company_name, year): # we need to get the filings and then extract the risk factor section
     # then apply the function above to extract the AI related passage
@@ -113,18 +85,25 @@ df = pd.DataFrame({
 
 # attempting to make the function myself because AI cant
 def get_AI_passage():
-    # for now, I am going to read only one filing, the 2024 microsoft risk factors
-    # directory is incredibly long so im going to make it a constant
-    DIR = r"z:\Devin\Research\sec-edgar-filings\Microsoft\RiskFactors\Microsoft_risk_factors_24.txt" 
-    ai_count = 0
+    # tested on one filing so now i need to load all of them
+    # loading the dataset.csv file
+    dataset_df = pd.read_csv("../dataset.csv")
 
+    for index, row in dataset_df.iterrows():
+        company = row['Company']
+        year = row['Year']
+
+        # Dir is no longer a constant 
+        filing_path = get_filing_path(company, year)
+  
+    
     pattern_pieces = [rf"\b{re.escape(word)}\b" for word in ai_keywords] # using the keywords from the ai_keywords list
     ai_regex = re.compile("|".join(pattern_pieces), re.IGNORECASE) # combining the keywords into a single regex pattern
 
     # creating the ending of the sentence that contains a keyword
     sentence_end_regex = re.compile(r'(?<!\bU\.S)(?<!\bInc)(?<!\bCo)(?<!\bvs)\.\s+(?=[A-Z"“])')
 
-    with open(DIR, 'r', encoding="utf-8") as file:
+    with open(filing_path, 'r', encoding="utf-8") as file:
         full_text = file.read().replace('\n', ' ')
         full_text = re.sub(r'\s+', ' ', full_text) # multiple spaces to one
     
@@ -141,7 +120,7 @@ def get_AI_passage():
    
     return extracted_passages
 
-passages = get_AI_passage()
+print(f"First passage: {get_AI_passage()[0]}")
 
-for num, passage in enumerate(passages):
-    print(f"\nPassage {num + 1}: {passage}\n")
+
+
