@@ -2,12 +2,12 @@ Company,Sector,Year,Words,Ai_mentions
 Abbott Labs,Healthcare,2022,4318,0
 Abbott Labs,Healthcare,2023,4763,0
 Abbott Labs,Healthcare,2024,4870,0
-Airbnb,Consumer Services,2022,46920,9
-Airbnb,Consumer Services,2023,47815,10
-Airbnb,Consumer Services,2024,47777,59
-Alphabet,Technology,2022,11667,2
-Alphabet,Technology,2023,10815,2
-Alphabet,Technology,2024,11290,32
+Airbnb,Consumer Services,2022,46920,18
+Airbnb,Consumer Services,2023,47815,17
+Airbnb,Consumer Services,2024,47777,66
+Alphabet,Technology,2022,11667,4
+Alphabet,Technology,2023,10815,4
+Alphabet,Technology,2024,11290,34
 Apple,Technology,2022,10221,0
 Apple,Technology,2023,9794,2
 Apple,Technology,2024,9913,5
@@ -17,39 +17,39 @@ CVS Health,Healthcare,2024,23280,0
 Costco,Retail,2022,5847,0
 Costco,Retail,2023,5815,0
 Costco,Retail,2024,5917,2
-Deere & Co,Manufacturing,2022,8866,0
-Deere & Co,Manufacturing,2023,8493,2
-Deere & Co,Manufacturing,2024,8532,8
+Deere & Co,Manufacturing,2022,8866,2
+Deere & Co,Manufacturing,2023,8493,6
+Deere & Co,Manufacturing,2024,8532,15
 Delta Air Lines,Consumer Services,2022,8487,0
 Delta Air Lines,Consumer Services,2023,8135,0
 Delta Air Lines,Consumer Services,2024,7424,0
 Eli Lilly,Healthcare,2022,5881,0
 Eli Lilly,Healthcare,2023,7109,0
 Eli Lilly,Healthcare,2024,8863,21
-General Electric,Manufacturing,2022,8973,0
-General Electric,Manufacturing,2023,10365,0
-General Electric,Manufacturing,2024,10735,4
-Goldman Sachs,Finance,2022,19824,0
-Goldman Sachs,Finance,2023,21233,0
-Goldman Sachs,Finance,2024,21253,24
+General Electric,Manufacturing,2022,8973,1
+General Electric,Manufacturing,2023,10365,1
+General Electric,Manufacturing,2024,10735,5
+Goldman Sachs,Finance,2022,19824,1
+Goldman Sachs,Finance,2023,21233,1
+Goldman Sachs,Finance,2024,21253,23
 Home Depot,Retail,2022,9842,0
 Home Depot,Retail,2023,9881,0
 Home Depot,Retail,2024,9849,3
-Honeywell,Manufacturing,2022,6716,0
-Honeywell,Manufacturing,2023,6093,0
-Honeywell,Manufacturing,2024,6712,8
-JPMorgan,Finance,2022,18304,0
-JPMorgan,Finance,2023,17724,0
-JPMorgan,Finance,2024,18852,5
+Honeywell,Manufacturing,2022,6716,1
+Honeywell,Manufacturing,2023,6093,1
+Honeywell,Manufacturing,2024,6712,9
+JPMorgan,Finance,2022,18304,2
+JPMorgan,Finance,2023,17724,2
+JPMorgan,Finance,2024,18852,7
 Mastercard,Finance,2022,11381,4
 Mastercard,Finance,2023,12186,4
-Mastercard,Finance,2024,12278,21
-Microsoft,Technology,2022,10360,16
-Microsoft,Technology,2023,10091,40
-Microsoft,Technology,2024,10863,55
+Mastercard,Finance,2024,12278,22
+Microsoft,Technology,2022,10360,17
+Microsoft,Technology,2023,10091,36
+Microsoft,Technology,2024,10863,51
 NVIDIA,Technology,2022,10825,15
-NVIDIA,Technology,2023,13156,31
-NVIDIA,Technology,2024,16048,52
+NVIDIA,Technology,2023,13156,32
+NVIDIA,Technology,2024,16048,57
 Netflix,Media,2022,10254,0
 Netflix,Media,2023,10395,0
 Netflix,Media,2024,10482,2
@@ -70,4 +70,4 @@ Uber,Consumer Services,2023,33905,6
 Uber,Consumer Services,2024,33905,6
 Warner Bros,Media,2022,11173,0
 Warner Bros,Media,2023,11791,0
-Warner Bros,Media,2024,11680,6
+Warner Bros,Media,2024,11680,5

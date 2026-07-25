@@ -1,5 +1,8 @@
 import json
 import csv
+import pandas as pd
+import re
+import os
 from pathlib import Path
 
 def build_master_dataset():
@@ -88,5 +91,99 @@ def build_master_dataset():
         avg_words = data['total_words'] / data['count'] if data['count'] > 0 else 0
         print(f"  {sector}: {data['count']} records, avg AI: {avg_ai:.1f}, avg words: {avg_words:.0f}")
 
+
+def get_filing_path(company_name, year):
+    """
+    Get the path to the filing file for a given company and year.
+    """
+    company_dir_map = {
+        'Abbott Labs': 'AbbottLabs',
+        'Airbnb': 'Airbnb',
+        'Alphabet': 'Alphabet',
+        'Apple': 'Apple',
+        'CVS Health': 'CVSHealth',
+        'Costco': 'Costco',
+        'Deere & Co': 'DeereCo',
+        'Delta Air Lines': 'DeltaAirLines',
+        'Eli Lilly': 'EliLilly',
+        'General Electric': 'GeneralElectric',
+        'Goldman Sachs': 'GoldmanSachs',
+        'Home Depot': 'HomeDepot',
+        'Honeywell': 'Honeywell',
+        'JPMorgan': 'JPMorgan',
+        'Mastercard': 'Mastercard',
+        'Microsoft': 'Microsoft',
+        'NVIDIA': 'NVIDIA',
+        'Netflix': 'Netflix',
+        'NextEra Energy': 'NextEraEnergy',
+        'Nike': 'Nike',
+        'Occidental': 'Occidental',
+        'Schlumberger': 'Schlumberger',
+        'UBER': 'UBER',
+        'Warner Bros': 'WarnerBros'
+    }
+    
+    dir_name = company_dir_map.get(company_name)
+    if not dir_name:
+        return None
+    
+    year_suffix = str(year)[-2:]
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    filing_path = os.path.join(script_dir, '..', 'sec-edgar-filings', dir_name, 'RiskFactors', f'{dir_name}_risk_factors_{year_suffix}.txt')
+    
+    if os.path.exists(filing_path):
+        return filing_path
+    return None
+
+def update_ai_mention_counts():
+    """
+    Update AI mention counts in dataset.csv by recounting from actual filing files.
+    """
+    # Load AI keywords
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    keywords_df = pd.read_csv(os.path.join(script_dir, '..', 'AI_keywords.csv'))
+    ai_keywords = keywords_df['keyword'].tolist()
+    
+    # Build regex pattern
+    pattern_pieces = [rf"\b{re.escape(word)}\b" for word in ai_keywords]
+    ai_regex = re.compile("|".join(pattern_pieces), re.IGNORECASE)
+    
+    # Load dataset
+    dataset_df = pd.read_csv(os.path.join(script_dir, '..', 'dataset.csv'))
+    
+    print("Updating AI mention counts from actual filings...")
+    
+    # Update each row
+    for index, row in dataset_df.iterrows():
+        company = row['Company']
+        year = row['Year']
+        
+        filing_path = get_filing_path(company, year)
+        
+        if filing_path:
+            ai_count = 0
+            with open(filing_path, 'r', encoding="utf-8") as file:
+                full_text = file.read()
+                matches = ai_regex.findall(full_text)
+                ai_count = len(matches)
+            
+            dataset_df.at[index, 'Ai_mentions'] = ai_count
+            print(f"  {company} {year}: {ai_count} AI mentions")
+        else:
+            print(f"  {company} {year}: Filing not found")
+    
+    # Save updated dataset
+    output_file = os.path.join(script_dir, '..', 'dataset.csv')
+    dataset_df.to_csv(output_file, index=False)
+    print(f"\nUpdated dataset saved to: {output_file}")
+
+    
+
+
+
 if __name__ == "__main__":
-    build_master_dataset()
+    # Uncomment to rebuild dataset from metadata
+    # build_master_dataset()
+    
+    # Update AI mention counts from actual filings
+    update_ai_mention_counts()
