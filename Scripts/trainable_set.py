@@ -111,24 +111,37 @@ df = pd.DataFrame({
 })
 
 
-#attempting to make the function myself because AI cant
+# attempting to make the function myself because AI cant
 def get_AI_passage():
     # for now, I am going to read only one filing, the 2024 microsoft risk factors
     # directory is incredibly long so im going to make it a constant
     DIR = r"z:\Devin\Research\sec-edgar-filings\Microsoft\RiskFactors\Microsoft_risk_factors_24.txt" 
     ai_count = 0
-    keyword = re.compile(r'\bAI\b', re.IGNORECASE)  # re ensures AI is a whole word
 
-    pattern_pieces = [rf"\b{re.escape(word)}\b" for word in ai_keywords]
-    ai_regex = re.compile("|".join(pattern_pieces), re.IGNORECASE)
+    pattern_pieces = [rf"\b{re.escape(word)}\b" for word in ai_keywords] # using the keywords from the ai_keywords list
+    ai_regex = re.compile("|".join(pattern_pieces), re.IGNORECASE) # combining the keywords into a single regex pattern
+
+    # creating the ending of the sentence that contains a keyword
+    sentence_end_regex = re.compile(r'(?<!\bU\.S)(?<!\bInc)(?<!\bCo)(?<!\bvs)\.\s+(?=[A-Z"“])')
 
     with open(DIR, 'r', encoding="utf-8") as file:
-        for line in file:
-            matches = ai_regex.findall(line)
-            if matches:
-                ai_count += len(matches)
+        full_text = file.read().replace('\n', ' ')
+        full_text = re.sub(r'\s+', ' ', full_text) # multiple spaces to one
     
-    return f"ai_count: {ai_count}"
+    sentences = sentence_end_regex.split(full_text)
+    extracted_passages = [] # keep track of the passages that contain AI keywords
+    
+    for sentence in sentences:
+        clean_sentence = sentence.strip()
+        if clean_sentence and not clean_sentence.endswith('.'):
+            clean_sentence += '.'
 
+        if ai_regex.search(clean_sentence):
+            extracted_passages.append(clean_sentence)
+   
+    return extracted_passages
 
-print(get_AI_passage())
+passages = get_AI_passage()
+
+for num, passage in enumerate(passages):
+    print(f"\nPassage {num + 1}: {passage}\n")
