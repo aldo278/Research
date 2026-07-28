@@ -82,6 +82,15 @@ For a better understanding before annotation, here is some labeling guides that 
 | 3     | Highly specific with concrete details or examples |
 
 
+Here are some examples of a complete annotation of a few example passages:
+| Passage                                                   | Risk Category         | Disclosure Quality | Notes                                                         |
+| --------------------------------------------------------- | --------------------- | ------------------ | ------------------------------------------------------------- |
+| "We use AI to improve customer service..."                | Other                 | 1                  | Mentions AI but does not describe a risk. Consider excluding. |
+| "Future AI regulations may increase compliance costs."    | Regulation            | 3                  | Clear regulatory risk with specific business impact.          |
+
+
+
+
 
 
 

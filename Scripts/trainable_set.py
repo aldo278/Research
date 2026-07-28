@@ -79,7 +79,10 @@ df = pd.DataFrame({
     'Filing_Year': merged_df['Year'],
     'Paragraph_id': None,
     'Passage': None,
-    'AI_keywords': None
+    'AI_keywords': None,
+    'risk_category': None,
+    'disclosure_quality': None,
+    'annotation': None
 })
 
 
@@ -165,7 +168,10 @@ for idx, row in df.iterrows():
                 'Filing_Year': row['Filing_Year'],
                 'Paragraph_id': para_ids[i],
                 'Passage': passage,
-                'AI_keywords': keywords[i]
+                'AI_keywords': keywords[i],
+                'risk_category': None,
+                'disclosure_quality': None,
+                'annotation': None
             })
     else:
         # Add empty row if no passages found
@@ -176,7 +182,10 @@ for idx, row in df.iterrows():
             'Filing_Year': row['Filing_Year'],
             'Paragraph_id': None,
             'Passage': None,
-            'AI_keywords': None
+            'AI_keywords': None,
+            'risk_category': None,
+            'disclosure_quality': None,
+            'annotation': None
         })
 
 # Create final expanded dataframe
@@ -185,7 +194,11 @@ df = pd.DataFrame(expanded_data)
 # Convert Paragraph_id to nullable integer (Int64 handles None values)
 df['Paragraph_id'] = pd.to_numeric(df['Paragraph_id'], errors='coerce').astype('Int64')
 
-print(df.head())
+# Saving as a csv
+output_file = os.path.join(script_dir, '..', 'annotation_dataset.csv')
+df.to_csv(output_file, index=False)
+print(f"\nDataset saved to: {output_file}")
+
 
 
 

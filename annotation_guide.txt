@@ -1,0 +1,23 @@
+This guide is also found in the README file, but here is a copy for quick and easy reference.
+
+
+| Category              | Definition                            | Example                                      |
+| --------------------- | ------------------------------------- | -------------------------------------------- |
+| Regulation            | Risks from laws or compliance         | "New AI regulations may..."                  |
+| Privacy               | Risks involving personal data         | "AI systems process customer information..." |
+| Cybersecurity         | AI-enabled attacks or vulnerabilities | "Generative AI may increase phishing..."     |
+| Intellectual Property | Copyright, licensing, patents         | "AI-generated content may infringe..."       |
+
+| Score | Meaning                                           |
+| ----- | ------------------------------------------------- |
+| 0     | Not actually about AI (false positive)            |
+| 1     | Generic boilerplate                               |
+| 2     | Moderately specific                               |
+| 3     | Highly specific with concrete details or examples |
+
+
+Here are some examples of a complete annotation of a few example passages:
+| Passage                                                   | Risk Category         | Disclosure Quality | Notes                                                         |
+| --------------------------------------------------------- | --------------------- | ------------------ | ------------------------------------------------------------- |
+| "We use AI to improve customer service..."                | Other                 | 1                  | Mentions AI but does not describe a risk. Consider excluding. |
+| "Future AI regulations may increase compliance costs."    | Regulation            | 3                  | Clear regulatory risk with specific business impact.          |
