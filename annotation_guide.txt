@@ -1,6 +1,4 @@
-This guide is also found in the README file, but here is a copy for quick and easy reference.
-
-
+Risk Category Table
 | Category              | Definition                            | Example                                      |
 | --------------------- | ------------------------------------- | -------------------------------------------- |
 | Regulation            | Risks from laws or compliance         | "New AI regulations may..."                  |
@@ -8,6 +6,7 @@ This guide is also found in the README file, but here is a copy for quick and ea
 | Cybersecurity         | AI-enabled attacks or vulnerabilities | "Generative AI may increase phishing..."     |
 | Intellectual Property | Copyright, licensing, patents         | "AI-generated content may infringe..."       |
 
+Disclosure Quality Table
 | Score | Meaning                                           |
 | ----- | ------------------------------------------------- |
 | 0     | Not actually about AI (false positive)            |
