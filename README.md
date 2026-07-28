@@ -61,6 +61,29 @@ Next step is to create another dataset with pandas. it should include the follow
 
 This is the dataset where we can start annotation before fine tuning the model
 
+Created the trainable_set.py script to extract the passages that contain AI keywords. Did not turn into a csv yet because I still need to add more columns for manual annotation. The new columns will be:
+- risk_category
+- disclosure quality
+- annotation
+
+For a better understanding before annotation, here is some labeling guides that I think is helpful:
+| Category              | Definition                            | Example                                      |
+| --------------------- | ------------------------------------- | -------------------------------------------- |
+| Regulation            | Risks from laws or compliance         | "New AI regulations may..."                  |
+| Privacy               | Risks involving personal data         | "AI systems process customer information..." |
+| Cybersecurity         | AI-enabled attacks or vulnerabilities | "Generative AI may increase phishing..."     |
+| Intellectual Property | Copyright, licensing, patents         | "AI-generated content may infringe..."       |
+
+| Score | Meaning                                           |
+| ----- | ------------------------------------------------- |
+| 0     | Not actually about AI (false positive)            |
+| 1     | Generic boilerplate                               |
+| 2     | Moderately specific                               |
+| 3     | Highly specific with concrete details or examples |
+
+
+
+
 
 
 

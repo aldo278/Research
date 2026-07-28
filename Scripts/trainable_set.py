@@ -138,8 +138,8 @@ for idx, row in df.iterrows():
         for passage in passages:
             found_keywords.append(get_keywords_in_passage(passage, ai_keywords))
         
-        # Assign paragraph IDs
-        para_ids = list(range(len(passages)))
+        # Assign paragraph IDs (starting at 1)
+        para_ids = list(range(1, len(passages) + 1))
         
         passages_list.append(passages)
         keywords_list.append(found_keywords)
@@ -182,8 +182,12 @@ for idx, row in df.iterrows():
 # Create final expanded dataframe
 df = pd.DataFrame(expanded_data)
 
+# Convert Paragraph_id to nullable integer (Int64 handles None values)
+df['Paragraph_id'] = pd.to_numeric(df['Paragraph_id'], errors='coerce').astype('Int64')
+
 print(df.head())
-print(f"\nTotal rows: {len(df)}")
+
+
 
 
 
