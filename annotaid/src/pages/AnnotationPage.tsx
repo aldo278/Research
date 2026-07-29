@@ -35,8 +35,14 @@ export default function AnnotationPage() {
   const [jumpValue, setJumpValue] = useState('')
 
   useEffect(() => {
-    loadFromLocalStorage()
-  }, [loadFromLocalStorage])
+    // Only restore from localStorage if this page was loaded directly
+    // (e.g. a hard refresh) with no in-memory data. Otherwise this would
+    // clobber the config just set on the Config page.
+    if (rows.length === 0) {
+      loadFromLocalStorage()
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
