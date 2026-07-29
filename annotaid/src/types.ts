@@ -18,6 +18,7 @@ export interface ColumnInputConfig {
   inputType: InputType
   guideTableIndex?: number // which guide table to source dropdown options from
   optionColumnIndex?: number // which column of that table holds the option values
+  customOptions?: string[] // manually entered dropdown options (used if no guide table selected)
 }
 
 export interface AppConfig {

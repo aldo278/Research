@@ -13,6 +13,9 @@ interface AppState extends AppConfig {
   setColumnInputConfigs: (configs: ColumnInputConfig[]) => void
   updateRowField: (rowIndex: number, field: string, value: string) => void
   goToRow: (index: number) => void
+  goToFirstUsableRow: () => void
+  isCurrentRowUsable: () => boolean
+  usableRowCount: () => number
   nextRow: () => void
   prevRow: () => void
   reset: () => void
@@ -33,13 +36,29 @@ const initialConfig: AppConfig = {
   columnInputConfigs: [],
 }
 
+function isRowUsable(row: CSVRow, mainGuideColumn: string): boolean {
+  if (!mainGuideColumn) return true
+  const val = row[mainGuideColumn]
+  return typeof val === 'string' && val.trim() !== ''
+}
+
+function firstUsableIndex(rows: CSVRow[], mainGuideColumn: string): number {
+  const idx = rows.findIndex((r) => isRowUsable(r, mainGuideColumn))
+  return idx === -1 ? 0 : idx
+}
+
 export const useAppStore = create<AppState>((set, get) => ({
   ...initialConfig,
   currentRowIndex: 0,
   history: [],
 
   setFile: (fileName, rows, columns) =>
-    set({ fileName, rows, allColumns: columns, currentRowIndex: 0 }),
+    set({
+      fileName,
+      rows,
+      allColumns: columns,
+      currentRowIndex: firstUsableIndex(rows, get().mainGuideColumn),
+    }),
 
   setAnnotationColumns: (cols) => set({ annotationColumns: cols }),
   setGuideColumns: (cols) => set({ guideColumns: cols }),
@@ -59,15 +78,40 @@ export const useAppStore = create<AppState>((set, get) => ({
     set({ currentRowIndex: clamped })
   },
 
+  goToFirstUsableRow: () => {
+    const { rows, mainGuideColumn } = get()
+    set({ currentRowIndex: firstUsableIndex(rows, mainGuideColumn) })
+  },
+
+  isCurrentRowUsable: () => {
+    const { rows, currentRowIndex, mainGuideColumn } = get()
+    const row = rows[currentRowIndex]
+    return row ? isRowUsable(row, mainGuideColumn) : false
+  },
+
+  usableRowCount: () => {
+    const { rows, mainGuideColumn } = get()
+    return rows.filter((r) => isRowUsable(r, mainGuideColumn)).length
+  },
+
   nextRow: () => {
-    const { currentRowIndex, rows, history } = get()
-    const next = Math.min(currentRowIndex + 1, rows.length - 1)
+    const { currentRowIndex, rows, history, mainGuideColumn } = get()
+    let next = currentRowIndex + 1
+    while (next < rows.length && !isRowUsable(rows[next], mainGuideColumn)) {
+      next += 1
+    }
+    if (next >= rows.length) next = rows.length - 1
     set({ currentRowIndex: next, history: [...history, currentRowIndex] })
   },
 
   prevRow: () => {
-    const { currentRowIndex } = get()
-    set({ currentRowIndex: Math.max(0, currentRowIndex - 1) })
+    const { currentRowIndex, rows, mainGuideColumn } = get()
+    let prev = currentRowIndex - 1
+    while (prev > 0 && !isRowUsable(rows[prev], mainGuideColumn)) {
+      prev -= 1
+    }
+    if (prev < 0) prev = 0
+    set({ currentRowIndex: prev })
   },
 
   reset: () => set({ ...initialConfig, currentRowIndex: 0, history: [] }),

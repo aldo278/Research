@@ -20,6 +20,7 @@ export default function ConfigPage() {
     setMainGuideColumn,
     setGuide,
     setColumnInputConfigs,
+    goToFirstUsableRow,
   } = useAppStore()
 
   const guideFileInputRef = useRef<HTMLInputElement>(null)
@@ -27,6 +28,8 @@ export default function ConfigPage() {
   const [inputTypeMap, setInputTypeMap] = useState<Record<string, InputType>>({})
   const [tableMap, setTableMap] = useState<Record<string, number>>({})
   const [optionColMap, setOptionColMap] = useState<Record<string, number>>({})
+  const [customOptionsMap, setCustomOptionsMap] = useState<Record<string, string>>({})
+  const [optionSourceMap, setOptionSourceMap] = useState<Record<string, 'guide' | 'custom'>>({})
 
   const remainingForGuide = useMemo(
     () => allColumns.filter((c) => !annotationColumns.includes(c)),
@@ -66,13 +69,24 @@ export default function ConfigPage() {
   const canProceed = annotationColumns.length > 0 && mainGuideColumn !== ''
 
   const handleStart = () => {
-    const configs: ColumnInputConfig[] = annotationColumns.map((col) => ({
-      column: col,
-      inputType: inputTypeMap[col] ?? 'text',
-      guideTableIndex: tableMap[col],
-      optionColumnIndex: optionColMap[col],
-    }))
+    const configs: ColumnInputConfig[] = annotationColumns.map((col) => {
+      const useCustom = optionSourceMap[col] === 'custom' || !guide || guide.tables.length === 0
+      const customOptions = useCustom
+        ? (customOptionsMap[col] ?? '')
+            .split(',')
+            .map((v) => v.trim())
+            .filter((v) => v.length > 0)
+        : undefined
+      return {
+        column: col,
+        inputType: inputTypeMap[col] ?? 'text',
+        guideTableIndex: useCustom ? undefined : tableMap[col],
+        optionColumnIndex: useCustom ? undefined : optionColMap[col],
+        customOptions,
+      }
+    })
     setColumnInputConfigs(configs)
+    goToFirstUsableRow()
     navigate('/annotate')
   }
 
@@ -165,60 +179,100 @@ export default function ConfigPage() {
         {annotationColumns.length > 0 && (
           <Section title="Configure annotation input types">
             <div className="space-y-4">
-              {annotationColumns.map((col) => (
-                <div
-                  key={col}
-                  className="bg-white border border-slate-200 rounded-lg p-4 flex flex-wrap items-center gap-3"
-                >
-                  <span className="font-medium text-slate-700 min-w-[140px]">{col}</span>
-                  <select
-                    value={inputTypeMap[col] ?? 'text'}
-                    onChange={(e) =>
-                      setInputTypeMap({ ...inputTypeMap, [col]: e.target.value as InputType })
-                    }
-                    className="border border-slate-300 rounded-md px-2 py-1 text-sm"
+              {annotationColumns.map((col) => {
+                const hasGuideTables = !!guide && guide.tables.length > 0
+                const source = optionSourceMap[col] ?? (hasGuideTables ? 'guide' : 'custom')
+
+                return (
+                  <div
+                    key={col}
+                    className="bg-white border border-slate-200 rounded-lg p-4 flex flex-wrap items-center gap-3"
                   >
-                    <option value="text">Free Text</option>
-                    <option value="dropdown">Dropdown</option>
-                    <option value="number">Number</option>
-                  </select>
+                    <span className="font-medium text-slate-700 min-w-[140px]">{col}</span>
+                    <select
+                      value={inputTypeMap[col] ?? 'text'}
+                      onChange={(e) =>
+                        setInputTypeMap({ ...inputTypeMap, [col]: e.target.value as InputType })
+                      }
+                      className="border border-slate-300 rounded-md px-2 py-1 text-sm"
+                    >
+                      <option value="text">Free Text</option>
+                      <option value="dropdown">Dropdown</option>
+                      <option value="number">Number</option>
+                    </select>
 
-                  {inputTypeMap[col] === 'dropdown' && guide && guide.tables.length > 0 && (
-                    <>
-                      <select
-                        value={tableMap[col] ?? ''}
-                        onChange={(e) =>
-                          setTableMap({ ...tableMap, [col]: Number(e.target.value) })
-                        }
-                        className="border border-slate-300 rounded-md px-2 py-1 text-sm"
-                      >
-                        <option value="">Guide table...</option>
-                        {guide.tables.map((t, i) => (
-                          <option key={i} value={i}>
-                            {t.title}
-                          </option>
-                        ))}
-                      </select>
+                    {inputTypeMap[col] === 'dropdown' && (
+                      <>
+                        {hasGuideTables && (
+                          <select
+                            value={source}
+                            onChange={(e) =>
+                              setOptionSourceMap({
+                                ...optionSourceMap,
+                                [col]: e.target.value as 'guide' | 'custom',
+                              })
+                            }
+                            className="border border-slate-300 rounded-md px-2 py-1 text-sm"
+                          >
+                            <option value="guide">From guide table</option>
+                            <option value="custom">Enter values manually</option>
+                          </select>
+                        )}
 
-                      {tableMap[col] !== undefined && guide.tables[tableMap[col]] && (
-                        <select
-                          value={optionColMap[col] ?? 0}
-                          onChange={(e) =>
-                            setOptionColMap({ ...optionColMap, [col]: Number(e.target.value) })
-                          }
-                          className="border border-slate-300 rounded-md px-2 py-1 text-sm"
-                        >
-                          {guide.tables[tableMap[col]].headers.map((h, i) => (
-                            <option key={i} value={i}>
-                              {h}
-                            </option>
-                          ))}
-                        </select>
-                      )}
-                    </>
-                  )}
-                </div>
-              ))}
+                        {source === 'guide' && hasGuideTables && (
+                          <>
+                            <select
+                              value={tableMap[col] ?? ''}
+                              onChange={(e) =>
+                                setTableMap({ ...tableMap, [col]: Number(e.target.value) })
+                              }
+                              className="border border-slate-300 rounded-md px-2 py-1 text-sm"
+                            >
+                              <option value="">Guide table...</option>
+                              {guide!.tables.map((t, i) => (
+                                <option key={i} value={i}>
+                                  {t.title}
+                                </option>
+                              ))}
+                            </select>
+
+                            {tableMap[col] !== undefined && guide!.tables[tableMap[col]] && (
+                              <select
+                                value={optionColMap[col] ?? 0}
+                                onChange={(e) =>
+                                  setOptionColMap({
+                                    ...optionColMap,
+                                    [col]: Number(e.target.value),
+                                  })
+                                }
+                                className="border border-slate-300 rounded-md px-2 py-1 text-sm"
+                              >
+                                {guide!.tables[tableMap[col]].headers.map((h, i) => (
+                                  <option key={i} value={i}>
+                                    {h}
+                                  </option>
+                                ))}
+                              </select>
+                            )}
+                          </>
+                        )}
+
+                        {source === 'custom' && (
+                          <input
+                            type="text"
+                            value={customOptionsMap[col] ?? ''}
+                            onChange={(e) =>
+                              setCustomOptionsMap({ ...customOptionsMap, [col]: e.target.value })
+                            }
+                            placeholder="Enter comma-separated values, e.g. Low, Medium, High"
+                            className="flex-1 min-w-[240px] border border-slate-300 rounded-md px-2 py-1 text-sm"
+                          />
+                        )}
+                      </>
+                    )}
+                  </div>
+                )
+              })}
             </div>
           </Section>
         )}

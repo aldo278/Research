@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import {
   ChevronLeft,
@@ -46,6 +46,18 @@ export default function AnnotationPage() {
     return () => window.removeEventListener('keydown', handler)
   }, [])
 
+  const usableIndices = useMemo(
+    () =>
+      rows.reduce<number[]>((acc, row, idx) => {
+        const val = mainGuideColumn ? row[mainGuideColumn] : undefined
+        if (!mainGuideColumn || (typeof val === 'string' && val.trim() !== '')) {
+          acc.push(idx)
+        }
+        return acc
+      }, []),
+    [rows, mainGuideColumn],
+  )
+
   if (rows.length === 0) {
     return (
       <div className="min-h-screen flex items-center justify-center">
@@ -63,11 +75,16 @@ export default function AnnotationPage() {
   }
 
   const currentRow = rows[currentRowIndex]
-  const progressPct = Math.round(((currentRowIndex + 1) / rows.length) * 100)
+
+  const positionInUsable = usableIndices.indexOf(currentRowIndex)
+  const usableTotal = usableIndices.length
+  const isLastUsable = positionInUsable === -1 || positionInUsable === usableTotal - 1
+  const progressPct =
+    usableTotal > 0 ? Math.round(((positionInUsable + 1) / usableTotal) * 100) : 0
 
   const handleSaveAndNext = () => {
     saveToLocalStorage()
-    if (currentRowIndex < rows.length - 1) {
+    if (!isLastUsable) {
       nextRow()
     } else {
       navigate('/review')
@@ -75,7 +92,7 @@ export default function AnnotationPage() {
   }
 
   const handleSkip = () => {
-    if (currentRowIndex < rows.length - 1) {
+    if (!isLastUsable) {
       nextRow()
     } else {
       navigate('/review')
@@ -83,8 +100,10 @@ export default function AnnotationPage() {
   }
 
   const handleJump = () => {
-    const idx = parseInt(jumpValue, 10) - 1
-    if (!isNaN(idx)) goToRow(idx)
+    const pos = parseInt(jumpValue, 10) - 1
+    if (!isNaN(pos) && pos >= 0 && pos < usableIndices.length) {
+      goToRow(usableIndices[pos])
+    }
     setJumpValue('')
   }
 
@@ -97,7 +116,7 @@ export default function AnnotationPage() {
       {/* Header */}
       <div className="bg-white border-b border-slate-200 px-6 py-3 flex items-center gap-4 sticky top-0 z-10">
         <span className="text-sm font-medium text-slate-600">
-          Row {currentRowIndex + 1} of {rows.length}
+          Row {positionInUsable + 1} of {usableTotal}
         </span>
         <div className="flex-1 h-2 bg-slate-100 rounded-full overflow-hidden max-w-xs">
           <div
@@ -110,7 +129,7 @@ export default function AnnotationPage() {
         <div className="flex items-center gap-2 ml-auto">
           <button
             onClick={prevRow}
-            disabled={currentRowIndex === 0}
+            disabled={positionInUsable <= 0}
             className="p-2 rounded-lg hover:bg-slate-100 disabled:opacity-40"
             title="Previous"
           >
@@ -164,15 +183,18 @@ export default function AnnotationPage() {
             const inputType = config?.inputType ?? 'text'
 
             let options: string[] = []
-            if (
-              inputType === 'dropdown' &&
-              guide &&
-              config?.guideTableIndex !== undefined &&
-              guide.tables[config.guideTableIndex]
-            ) {
-              const table = guide.tables[config.guideTableIndex]
-              const colIdx = config.optionColumnIndex ?? 0
-              options = table.rows.map((r) => r[colIdx]).filter(Boolean)
+            if (inputType === 'dropdown') {
+              if (config?.customOptions && config.customOptions.length > 0) {
+                options = config.customOptions
+              } else if (
+                guide &&
+                config?.guideTableIndex !== undefined &&
+                guide.tables[config.guideTableIndex]
+              ) {
+                const table = guide.tables[config.guideTableIndex]
+                const colIdx = config.optionColumnIndex ?? 0
+                options = table.rows.map((r) => r[colIdx]).filter(Boolean)
+              }
             }
 
             return (
