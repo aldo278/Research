@@ -89,6 +89,14 @@ Here are some examples of a complete annotation of a few example passages:
 | "Future AI regulations may increase compliance costs."    | Regulation            | 3                  | Clear regulatory risk with specific business impact.          |
 
 
+Annotation is complete and the dataset is available in annotation_dataset_completed.csv
+
+I did notice an issue with a column in the dataset with the paragraph_id. I created a script that fixes this, it makes the row unique and is indentity.
+- run fix_paragraph_id.py
+
+
+
+
 
 
 

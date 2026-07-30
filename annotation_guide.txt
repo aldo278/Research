@@ -1,22 +1,41 @@
 Risk Category Table
-| Category              | Definition                            | Example                                      |
-| --------------------- | ------------------------------------- | -------------------------------------------- |
-| Regulation            | Risks from laws or compliance         | "New AI regulations may..."                  |
-| Privacy               | Risks involving personal data         | "AI systems process customer information..." |
-| Cybersecurity         | AI-enabled attacks or vulnerabilities | "Generative AI may increase phishing..."     |
-| Intellectual Property | Copyright, licensing, patents         | "AI-generated content may infringe..."       |
+| Category              | Definition                                                              | Example                                                                 |
+| ---------------------- | ------------------------------------------------------------------------ | -------------------------------------------------------------------------- |
+| Regulation             | Risks from laws, compliance, or government/regulatory action            | "New AI regulations may..."                                                |
+| Privacy                | Risks involving personal or confidential data                           | "AI systems process customer information..."                              |
+| Cybersecurity          | AI-enabled attacks or security vulnerabilities                          | "Generative AI may increase phishing..."                                  |
+| Intellectual Property  | Copyright, licensing, patent infringement                               | "AI-generated content may infringe..."                                    |
+| Competitive            | Competitors' AI capabilities, failure to keep pace, market/execution risk | "Competitors may develop AI products superior to ours..."                 |
+| Bias/Ethics            | Algorithmic bias, discrimination, fairness, ethical or societal concerns | "AI models may reflect biases included in the data on which they are trained..." |
+| Accuracy/Reliability   | Hallucinations, factual errors, defects, flawed outputs                 | "AI-generated content may appear correct but be factually inaccurate..."  |
+| Cost/Investment        | Capital/operating costs to build, deploy, or maintain AI                | "We will bear significant development and operational costs to build AI..." |
+| Third-Party/Vendor     | Reliance on external AI providers, partners, or third-party training data | "This AI may be developed by Microsoft or others, including OpenAI..."   |
+| Geopolitical/Trade     | Export controls, government restrictions on AI products/technology      | "Export controls targeting GPUs and semiconductors associated with AI..." |
+| Other                  | Mentions AI but no clear risk, or doesn't fit above categories          | "We use AI to improve customer service..."                                |
+
+Notes on applying categories:
+- Many passages plausibly touch more than one category (e.g., a passage about AI output that is biased, leaks confidential data, and infringes IP touches Bias/Ethics, Privacy, and Intellectual Property at once). Assign the single most prominent/leading category rather than splitting the row.
+- "Other" is also used for passages that mention AI/automation-adjacent terms but do not actually describe AI (see Quality = 0 below), and for purely descriptive statements (e.g., "We are building AI into our products") that don't state a risk.
 
 Disclosure Quality Table
-| Score | Meaning                                           |
-| ----- | ------------------------------------------------- |
-| 0     | Not actually about AI (false positive)            |
-| 1     | Generic boilerplate                               |
-| 2     | Moderately specific                               |
-| 3     | Highly specific with concrete details or examples |
+| Score | Meaning                                           | Notes                                                                 |
+| ----- | -------------------------------------------------- | ---------------------------------------------------------------------- |
+| 0     | Not actually about AI (false positive)             | Passage was keyword-matched (e.g., "automation") but doesn't reference AI/ML at all |
+| 1     | Generic boilerplate                                | Mentions AI but is descriptive, a list item, or a vague/general risk statement with no concrete mechanism or impact |
+| 2     | Moderately specific                                | Describes a specific risk or mechanism, but without a quantified or clearly named concrete detail (e.g., named law, dollar impact, specific attack type) |
+| 3     | Highly specific with concrete details or examples  | Names a specific law/regulation (e.g., EU AI Act, GDPR), a quantified impact (e.g., "fines up to 7% of revenue"), a named third party (e.g., OpenAI), or a concrete mechanism of harm |
 
 
 Here are some examples of a complete annotation of a few example passages:
-| Passage                                                   | Risk Category         | Disclosure Quality | Notes                                                         |
-| --------------------------------------------------------- | --------------------- | ------------------ | ------------------------------------------------------------- |
-| "We use AI to improve customer service..."                | Other                 | 1                  | Mentions AI but does not describe a risk. Consider excluding. |
-| "Future AI regulations may increase compliance costs."    | Regulation            | 3                  | Clear regulatory risk with specific business impact.          |
+| Passage                                                                                                   | Risk Category         | Disclosure Quality | Notes                                                                                 |
+| ----------------------------------------------------------------------------------------------------------- | ---------------------- | ------------------- | ---------------------------------------------------------------------------------------- |
+| "We use AI to improve customer service..."                                                                  | Other                  | 1                    | Mentions AI but does not describe a risk. Consider excluding.                            |
+| "Future AI regulations may increase compliance costs."                                                      | Regulation              | 3                    | Clear regulatory risk with specific business impact.                                     |
+| "Other companies may develop AI products and technologies that are similar or superior to our technologies." | Competitive             | 2                    | Names a specific competitive dynamic but no concrete named competitor or quantified impact. |
+| "AI models... may produce output that is incorrect... reflect biases included in the data on which they are trained." | Bias/Ethics             | 3                    | Highly specific: names the mechanism (training-data bias) and concrete failure mode.     |
+| "AI technologies... may create content or information that appears correct but is factually inaccurate or flawed." | Accuracy/Reliability    | 3                    | Specific: names hallucination-style failure mode.                                        |
+| "We will bear significant development and operational costs to build and support the AI capabilities..."   | Cost/Investment         | 2                    | Specific cost risk, but no dollar figure or magnitude given.                             |
+| "This AI may be developed by Microsoft or others, including our strategic partner, OpenAI."                 | Third-Party/Vendor      | 2                    | Names a specific partner (OpenAI) but doesn't describe the resulting risk in detail.     |
+| "Export controls targeting GPUs and semiconductors associated with AI... would restrict our ability to export... creating a competitive disadvantage." | Geopolitical/Trade      | 3                    | Highly specific: names the mechanism (export controls) and concrete competitive/financial impact. |
+| "The EU AI Act... proposes fines for breach of up to 7% of worldwide annual turnover (revenue)."            | Regulation              | 3                    | Highly specific: names the law and quantifies the penalty.                               |
+| Passage doesn't mention AI/ML at all (e.g., generic "technological change and automation" language)         | Other                   | 0                    | False positive — likely keyword-matched on "automation," not actually about AI.          |
