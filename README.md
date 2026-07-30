@@ -94,6 +94,11 @@ Annotation is complete and the dataset is available in annotation_dataset_comple
 I did notice an issue with a column in the dataset with the paragraph_id. I created a script that fixes this, it makes the row unique and is indentity.
 - run fix_paragraph_id.py
 
+We are closer to training the model.
+One final check before training is to check how many passages we have. The category distribution for each regulation category and a disclosure quality distribution as well. To do that, I am going to make a script to count each one.
+- run count_categories.py: the output is saved as a table in count_categories_output.txt
+
+
 
 
 
