@@ -10,4 +10,11 @@ from sklearn.metrics import (
     confusion_matrix
 )
 
+# loading dataset
+df = pd.read_csv("Z:/Devin/Research/annotation_dataset_completed.csv")
+
+df = df.dropna(subset=["Passage", "risk_category"])
+print(df.head())
+
+
 
