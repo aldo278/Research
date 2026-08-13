@@ -99,6 +99,19 @@ One final check before training is to check how many passages we have. The categ
 - run count_categories.py: the output is saved as a table in count_categories_output.txt
 
 
+## Modeling Phase
+Build seperate models for different tasks. For now I will start with TF-IDF + Logistic Regression for the risk catefory task. I expect the model to work as follows...
+    "New regulations governing artificial intelligence may increase our compliance costs"
+    -> "Regulation"
+
+I will then build a seperate model for disclosure quality
+
+### TF-IDF
+I first need to get the TF-IDF vectors for each passage, and luckily there is a library for that. I can run the following command
+    - pip install pandas scikit-learn matplotlib seaborn
+
+
+
 
 
 
