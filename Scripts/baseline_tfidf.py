@@ -30,6 +30,65 @@ print(f"Training samples: {len(X_train)}")
 print(f"Test samples: {len(X_test)}")
 
 
+#       TF-IDF and Logistic regression
+
+model = Pipeline([
+    (
+        "tfidf",
+        TfidfVectorizer(
+            lowercase = True,
+            ngram_range = (1, 2),
+            min_df = 1,
+            max_df = 0.95
+        )
+    ),
+    (
+        "classifier",
+        LogisticRegression(
+            max_iter = 2000,
+            class_weight = "balanced"
+        )
+    )
+])
+
+
+# -----------------------------
+# 5. Train
+# -----------------------------
+
+model.fit(X_train, y_train)
+
+# -----------------------------
+# 6. Predict
+# -----------------------------
+
+y_pred = model.predict(X_test)
+
+# -----------------------------
+# 7. Evaluate
+# -----------------------------
+
+accuracy = accuracy_score(y_test, y_pred)
+
+print("\n==============================")
+print("TF-IDF + Logistic Regression")
+print("==============================")
+
+print(f"\nAccuracy: {accuracy:.4f}")
+
+print("\nClassification Report:")
+print(classification_report(y_test, y_pred, zero_division=0))
+
+# -----------------------------
+# 8. Confusion Matrix
+# -----------------------------
+
+cm = confusion_matrix(y_test, y_pred)
+
+print("\nConfusion Matrix:")
+print(cm)
+
+
 
 
 
