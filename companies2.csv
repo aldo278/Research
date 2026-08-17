@@ -1,0 +1,32 @@
+ticker,company,industry
+
+AMD,Advanced Micro Devices,Technology
+AVGO,Broadcom,Technology
+CSCO,Cisco Systems,Technology
+
+JNJ,Johnson & Johnson,Healthcare
+ABBV,AbbVie,Healthcare
+DHR,Danaher,Healthcare
+TMO,Thermo Fisher Scientific,Healthcare
+
+BAC,Bank of America,Finance
+V,Visa,Finance
+BLK,BlackRock,Finance
+C,Citigroup,Finance
+
+WMT,Walmart,Retail
+AMZN,Amazon,Retail
+
+CAT,Caterpillar,Manufacturing
+LMT,Lockheed Martin,Manufacturing
+EMR,Emerson Electric,Manufacturing
+
+XOM,Exxon Mobil,Energy
+COP,ConocoPhillips,Energy
+
+META,Meta Platforms,Media
+DIS,Walt Disney,Media
+T,AT&T,Media
+
+UPS,UPS,Consumer Services
+MAR,Marriott International,Consumer Services
