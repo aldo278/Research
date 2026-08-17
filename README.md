@@ -110,6 +110,14 @@ I will then build a seperate model for disclosure quality
 I first need to get the TF-IDF vectors for each passage, and luckily there is a library for that. I can run the following command
     - pip install pandas scikit-learn matplotlib seaborn
 
+run the following script to get the TF-IDF vectors
+    - python Scripts/get_tfidf_vectors.py
+
+There is a .75 accuracy. This is a good start. I made another companies file so that we can get more classification examples and improve the model.
+
+Now I will edit the current scripts and run those to get better results.
+
+
 
 
 
