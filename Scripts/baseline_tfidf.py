@@ -45,7 +45,7 @@ model = Pipeline([
     (
         "classifier",
         LogisticRegression(
-            max_iter = 2000,
+            max_iter = 10000,
             class_weight = "balanced"
         )
     )
