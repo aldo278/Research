@@ -21,7 +21,7 @@ def organize_folders():
         print("No filings directory found to organize.")
         return
 
-    with open("companies.csv", "r") as file:
+    with open("../companies2.csv", "r") as file:
         reader = csv.DictReader(file)
         for row in reader:
             ticker = row["ticker"]
@@ -74,7 +74,7 @@ def download_all_filings():
     dl = Downloader("sec_data", "antanolopez@linfield.edu")
     
     # Read companies from CSV file
-    with open('companies.csv', 'r') as file:
+    with open('../companies2.csv', 'r') as file:
         reader = csv.DictReader(file)
         
         # Iterate through each company and download their 10-K filings

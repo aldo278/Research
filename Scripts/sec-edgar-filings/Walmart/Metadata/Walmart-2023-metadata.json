@@ -1,0 +1,14 @@
+{
+    "companyName": "Walmart",
+    "ticker": "WMT",
+    "documentType": "10-K",
+    "filingYear": 2023,
+    "filingDate": "2023-03-17",
+    "sourceLink": "https://www.sec.gov/Archives/edgar/data/104169/000010416923000020/0000104169-23-000020-index.htm",
+    "accessionNumber": "0000104169-23-000020",
+    "fileFormat": "txt",
+    "ai_mentions": 0,
+    "words_in_1a": 0,
+    "sector": null,
+    "ai_analysis_date": "2026-07-20"
+}

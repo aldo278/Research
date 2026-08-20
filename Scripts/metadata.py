@@ -4,7 +4,7 @@ import re
 from pathlib import Path
 
 FILINGS_DIR = "sec-edgar-filings"
-COMPANIES_CSV = "companies.csv"
+COMPANIES_CSV = "../companies2.csv"
 DOCUMENT_TYPE = "10-K"
 FILE_FORMAT = "txt"
 

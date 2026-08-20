@@ -75,7 +75,7 @@ def get_company_sector(company_name):
     Get the sector/industry for a company from companies.csv.
     """
     try:
-        with open('companies.csv', 'r', encoding='utf-8') as f:
+        with open('../companies.csv', 'r', encoding='utf-8') as f:
             reader = csv.DictReader(f)
             for row in reader:
                 # Match company name (case-insensitive, ignoring spaces)

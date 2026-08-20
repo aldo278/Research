@@ -1,0 +1,377 @@
+{
+  "total_companies": 21,
+  "companies": {
+    "AbbVie": {
+      "2022": {
+        "ai_mentions": 0,
+        "words_in_1a": 0,
+        "sector": null
+      },
+      "2023": {
+        "ai_mentions": 0,
+        "words_in_1a": 0,
+        "sector": null
+      },
+      "2024": {
+        "ai_mentions": 0,
+        "words_in_1a": 0,
+        "sector": null
+      }
+    },
+    "AdvancedMicroDevices": {
+      "2022": {
+        "ai_mentions": 0,
+        "words_in_1a": 0,
+        "sector": null
+      },
+      "2023": {
+        "ai_mentions": 0,
+        "words_in_1a": 0,
+        "sector": null
+      },
+      "2024": {
+        "ai_mentions": 0,
+        "words_in_1a": 0,
+        "sector": null
+      }
+    },
+    "Amazon": {
+      "2022": {
+        "ai_mentions": 0,
+        "words_in_1a": 0,
+        "sector": null
+      },
+      "2023": {
+        "ai_mentions": 0,
+        "words_in_1a": 0,
+        "sector": null
+      },
+      "2024": {
+        "ai_mentions": 0,
+        "words_in_1a": 0,
+        "sector": null
+      }
+    },
+    "ATT": {
+      "2022": {
+        "ai_mentions": 0,
+        "words_in_1a": 0,
+        "sector": null
+      },
+      "2023": {
+        "ai_mentions": 0,
+        "words_in_1a": 0,
+        "sector": null
+      },
+      "2024": {
+        "ai_mentions": 0,
+        "words_in_1a": 0,
+        "sector": null
+      }
+    },
+    "BankofAmerica": {
+      "2022": {
+        "ai_mentions": 0,
+        "words_in_1a": 0,
+        "sector": null
+      },
+      "2023": {
+        "ai_mentions": 0,
+        "words_in_1a": 0,
+        "sector": null
+      },
+      "2024": {
+        "ai_mentions": 0,
+        "words_in_1a": 0,
+        "sector": null
+      }
+    },
+    "Broadcom": {
+      "2022": {
+        "ai_mentions": 0,
+        "words_in_1a": 0,
+        "sector": null
+      },
+      "2023": {
+        "ai_mentions": 0,
+        "words_in_1a": 0,
+        "sector": null
+      },
+      "2024": {
+        "ai_mentions": 0,
+        "words_in_1a": 0,
+        "sector": null
+      }
+    },
+    "Caterpillar": {
+      "2022": {
+        "ai_mentions": 0,
+        "words_in_1a": 0,
+        "sector": null
+      },
+      "2023": {
+        "ai_mentions": 0,
+        "words_in_1a": 0,
+        "sector": null
+      },
+      "2024": {
+        "ai_mentions": 0,
+        "words_in_1a": 0,
+        "sector": null
+      }
+    },
+    "CiscoSystems": {
+      "2022": {
+        "ai_mentions": 0,
+        "words_in_1a": 0,
+        "sector": null
+      },
+      "2023": {
+        "ai_mentions": 0,
+        "words_in_1a": 0,
+        "sector": null
+      },
+      "2024": {
+        "ai_mentions": 0,
+        "words_in_1a": 0,
+        "sector": null
+      }
+    },
+    "Citigroup": {
+      "2022": {
+        "ai_mentions": 0,
+        "words_in_1a": 0,
+        "sector": null
+      },
+      "2023": {
+        "ai_mentions": 0,
+        "words_in_1a": 0,
+        "sector": null
+      },
+      "2024": {
+        "ai_mentions": 0,
+        "words_in_1a": 0,
+        "sector": null
+      }
+    },
+    "ConocoPhillips": {
+      "2022": {
+        "ai_mentions": 0,
+        "words_in_1a": 0,
+        "sector": null
+      },
+      "2023": {
+        "ai_mentions": 0,
+        "words_in_1a": 0,
+        "sector": null
+      },
+      "2024": {
+        "ai_mentions": 0,
+        "words_in_1a": 0,
+        "sector": null
+      }
+    },
+    "Danaher": {
+      "2022": {
+        "ai_mentions": 0,
+        "words_in_1a": 0,
+        "sector": null
+      },
+      "2023": {
+        "ai_mentions": 0,
+        "words_in_1a": 0,
+        "sector": null
+      },
+      "2024": {
+        "ai_mentions": 0,
+        "words_in_1a": 0,
+        "sector": null
+      }
+    },
+    "EmersonElectric": {
+      "2022": {
+        "ai_mentions": 0,
+        "words_in_1a": 0,
+        "sector": null
+      },
+      "2023": {
+        "ai_mentions": 0,
+        "words_in_1a": 0,
+        "sector": null
+      },
+      "2024": {
+        "ai_mentions": 0,
+        "words_in_1a": 0,
+        "sector": null
+      }
+    },
+    "JohnsonJohnson": {
+      "2022": {
+        "ai_mentions": 0,
+        "words_in_1a": 0,
+        "sector": null
+      },
+      "2023": {
+        "ai_mentions": 0,
+        "words_in_1a": 0,
+        "sector": null
+      },
+      "2024": {
+        "ai_mentions": 0,
+        "words_in_1a": 0,
+        "sector": null
+      }
+    },
+    "LockheedMartin": {
+      "2022": {
+        "ai_mentions": 0,
+        "words_in_1a": 0,
+        "sector": null
+      },
+      "2023": {
+        "ai_mentions": 0,
+        "words_in_1a": 0,
+        "sector": null
+      },
+      "2024": {
+        "ai_mentions": 0,
+        "words_in_1a": 0,
+        "sector": null
+      }
+    },
+    "MarriottInternational": {
+      "2022": {
+        "ai_mentions": 0,
+        "words_in_1a": 0,
+        "sector": null
+      },
+      "2023": {
+        "ai_mentions": 0,
+        "words_in_1a": 0,
+        "sector": null
+      },
+      "2024": {
+        "ai_mentions": 0,
+        "words_in_1a": 0,
+        "sector": null
+      }
+    },
+    "MetaPlatforms": {
+      "2022": {
+        "ai_mentions": 0,
+        "words_in_1a": 0,
+        "sector": null
+      },
+      "2023": {
+        "ai_mentions": 0,
+        "words_in_1a": 0,
+        "sector": null
+      },
+      "2024": {
+        "ai_mentions": 0,
+        "words_in_1a": 0,
+        "sector": null
+      }
+    },
+    "ThermoFisherScientific": {
+      "2022": {
+        "ai_mentions": 0,
+        "words_in_1a": 0,
+        "sector": null
+      },
+      "2023": {
+        "ai_mentions": 0,
+        "words_in_1a": 0,
+        "sector": null
+      },
+      "2024": {
+        "ai_mentions": 0,
+        "words_in_1a": 0,
+        "sector": null
+      }
+    },
+    "UPS": {
+      "2022": {
+        "ai_mentions": 0,
+        "words_in_1a": 0,
+        "sector": null
+      },
+      "2023": {
+        "ai_mentions": 0,
+        "words_in_1a": 0,
+        "sector": null
+      },
+      "2024": {
+        "ai_mentions": 0,
+        "words_in_1a": 0,
+        "sector": null
+      }
+    },
+    "Visa": {
+      "2022": {
+        "ai_mentions": 0,
+        "words_in_1a": 0,
+        "sector": null
+      },
+      "2023": {
+        "ai_mentions": 0,
+        "words_in_1a": 0,
+        "sector": null
+      },
+      "2024": {
+        "ai_mentions": 0,
+        "words_in_1a": 0,
+        "sector": null
+      }
+    },
+    "Walmart": {
+      "2022": {
+        "ai_mentions": 0,
+        "words_in_1a": 0,
+        "sector": null
+      },
+      "2023": {
+        "ai_mentions": 0,
+        "words_in_1a": 0,
+        "sector": null
+      },
+      "2024": {
+        "ai_mentions": 0,
+        "words_in_1a": 0,
+        "sector": null
+      }
+    },
+    "WaltDisney": {
+      "2022": {
+        "ai_mentions": 0,
+        "words_in_1a": 0,
+        "sector": null
+      },
+      "2023": {
+        "ai_mentions": 0,
+        "words_in_1a": 0,
+        "sector": null
+      },
+      "2024": {
+        "ai_mentions": 0,
+        "words_in_1a": 0,
+        "sector": null
+      }
+    }
+  },
+  "yearly_totals": {
+    "2022": {
+      "total_ai_mentions": 0,
+      "total_companies": 21
+    },
+    "2023": {
+      "total_ai_mentions": 0,
+      "total_companies": 21
+    },
+    "2024": {
+      "total_ai_mentions": 0,
+      "total_companies": 21
+    }
+  },
+  "analysis_date": "2026-07-20"
+}
