@@ -1,3 +1,5 @@
+from pathlib import Path
+
 import pandas as pd
 
 from sklearn.model_selection import train_test_split
@@ -11,7 +13,7 @@ from sklearn.metrics import (
 )
 
 # loading dataset
-df = pd.read_csv("Z:/Devin/Research/annotation_dataset_completed.csv")
+df = pd.read_csv(Path(__file__).resolve().parent.parent / "annotation_dataset_completed.csv")
 
 df = df.dropna(subset=["Passage", "risk_category"]) # here we simply drop all empty values
 
